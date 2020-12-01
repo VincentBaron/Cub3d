@@ -6,7 +6,7 @@
 /*   By: vincentbaron <vincentbaron@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/23 15:31:48 by vbaron            #+#    #+#             */
-/*   Updated: 2020/11/06 09:52:36 by vincentbaro      ###   ########.fr       */
+/*   Updated: 2020/11/30 18:03:17 by vincentbaro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,18 +43,6 @@ void draw_square(t_general *mother, char *type)
                x++;
           }
           y++;
-     }
-}
-
-void draw_map_ray(t_general *mother)
-{
-     int length;
-
-     length = sinf(mother->raycast.angle) * (mother->raycast.dist_inter) * mother->map.size_x;
-     while (length > 0)
-     {
-          draw_pixel(&(mother->mlx.img_map), (int)(mother->gps.pos.x * mother->map.size_x + length * cosf(mother->raycast.angle)), (int)(mother->gps.pos.y * mother->map.size_y + length * sinf(mother->raycast.angle)));
-          length--;
      }
 }
 
@@ -105,49 +93,14 @@ void draw_map(t_general *mother)
      }
 }
 
-int       check_angle(float angle, float a_max, float a_min)
-{
-     if (angle <= a_max && angle >= a_min)
-          return (-1);
-     else
-          return (1);
-}
-
 void    redefine_position(t_general *mother)
 {
-    float angle;
-
-     angle = mother->gps.angle;
-     if (mother->gps.rot_left == 1)
-          mother->gps.angle += PI / 8;
-     if (mother->gps.rot_right == 1)
-          mother->gps.angle -= PI / 8;
      if (mother->gps.move.y == -1 && mother->args.matrix[(int)(mother->gps.pos.y - 0.35)][(int)(mother->gps.pos.x - 0.26)] == '0' && mother->args.matrix[(int)(mother->gps.pos.y - 0.35)][(int)(mother->gps.pos.x + 0.26)] == '0')
-     {
-          mother->gps.pos.y += check_angle(angle, PI, 0) * 0.1 * sinf(angle);
-          mother->gps.pos.x += check_angle(angle, (3 * PI) / 2, PI / 2) * 0.1 * cosf(angle);
-     }
-     else if (mother->gps.move.y == 1 && mother->args.matrix[(int)(mother->gps.pos.y + 0.35)][(int)(mother->gps.pos.x - 0.26)] == '0' && mother->args.matrix[(int)(mother->gps.pos.y + 0.35)][(int)(mother->gps.pos.x + 0.26)] == '0')
-     {
-          mother->gps.pos.y += check_angle(angle, 2 * PI, PI) * 0.1 * sinf(angle);
-          mother->gps.pos.x += check_angle(angle, PI / 2, 3 * PI / 2) * 0.1 * cosf(angle);
-     }
-     else if (mother->gps.move.x == -1 && mother->args.matrix[(int)(mother->gps.pos.y + 0.35)][(int)(mother->gps.pos.x - 0.26)] == '0' && mother->args.matrix[(int)(mother->gps.pos.y + 0.35)][(int)(mother->gps.pos.x + 0.26)] == '0')
-     {
-          mother->gps.pos.y += check_angle(angle + PI / 2, 2 * PI, PI) * 0.1 * sinf(angle + PI / 2);
-          mother->gps.pos.x += check_angle(angle + PI / 2, PI / 2, 3 * PI / 2) * 0.1 * cosf(angle + PI / 2);
-     }
-     else if (mother->gps.move.x == 1 && mother->args.matrix[(int)(mother->gps.pos.y + 0.35)][(int)(mother->gps.pos.x - 0.26)] == '0' && mother->args.matrix[(int)(mother->gps.pos.y + 0.35)][(int)(mother->gps.pos.x + 0.26)] == '0')
-     {
-          mother->gps.pos.y += check_angle(angle - PI / 2, 2 * PI, PI) * 0.1 * sinf(angle - PI / 2);
-          mother->gps.pos.x += check_angle(angle - PI / 2, PI / 2, 3 * PI / 2) * 0.1 * cosf(angle - PI / 2);
-     } 
-     /*if (mother->gps.move.y == -1 && mother->args.matrix[(int)(mother->gps.pos.y - 0.35)][(int)(mother->gps.pos.x - 0.26)] == '0' && mother->args.matrix[(int)(mother->gps.pos.y - 0.35)][(int)(mother->gps.pos.x + 0.26)] == '0')
         mother->gps.pos.y -= 0.1;        
      else if (mother->gps.move.y == 1 && mother->args.matrix[(int)(mother->gps.pos.y + 0.35)][(int)(mother->gps.pos.x - 0.26)] == '0' && mother->args.matrix[(int)(mother->gps.pos.y + 0.35)][(int)(mother->gps.pos.x + 0.26)] == '0')
         mother->gps.pos.y += 0.1;
      else if (mother->gps.move.x == -1 && mother->args.matrix[(int)(mother->gps.pos.y - 0.26)][(int)(mother->gps.pos.x - 0.35)] == '0' && mother->args.matrix[(int)(mother->gps.pos.y + 0.26)][(int)(mother->gps.pos.x - 0.35)] == '0')
         mother->gps.pos.x -= 0.1;
      else if (mother->gps.move.x == +1 && mother->args.matrix[(int)(mother->gps.pos.y - 0.26)][(int)(mother->gps.pos.x + 0.35)] == '0' && mother->args.matrix[(int)(mother->gps.pos.y + 0.26)][(int)(mother->gps.pos.x + 0.35)] == '0')
-        mother->gps.pos.x +=0.1;*/
+        mother->gps.pos.x +=0.1;
 }

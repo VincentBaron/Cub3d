@@ -6,7 +6,7 @@
 /*   By: vincentbaron <vincentbaron@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/18 14:03:48 by vbaron            #+#    #+#             */
-/*   Updated: 2020/11/06 09:48:54 by vincentbaro      ###   ########.fr       */
+/*   Updated: 2020/12/01 09:48:25 by vincentbaro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@
 # define RIGHT 2
 # define ROT_RIGHT 124
 # define ROT_LEFT 123
+# define MOVE_SPEED 1
+# define ROT_SPEED 1
 
 //MATHS
 
@@ -58,24 +60,22 @@ typedef struct s4_list
 
 typedef struct s_pix
 {
-    float x;
-    float y;
-} t_float;
+    double x;
+    double y;
+} t_double;
 
 typedef struct s1_list
 {
-    t_float pos;
-    t_float dir;
-    float square;
-    int height;
-    int width;
-    t_float plane;
-    t_float time;
+    t_double pos;
+    t_double dir;
+    t_double plane;
+    t_double time;
     t_coor move;
     int rot_left;
     int rot_right;
     int event;
-    float angle;
+    t_double camera;
+    t_double ray;
 }   t_gps;
 
 typedef struct s2_list
@@ -119,6 +119,7 @@ typedef struct s12_list
     void *win;
     t_img img_map;
     t_img img_ray;
+    int slice;
 } t_mlx;
 
 typedef struct s_map
@@ -129,13 +130,20 @@ typedef struct s_map
     int track_y;
 } t_map;
 
-typedef struct s_ray
+typedef struct s_dda
 {
-    float dist_inter;
-    t_float pos_inter;
-    float angle;
-    float dist_projection;
-} t_ray;
+    t_double side;
+    t_coor map;
+    t_double delta;
+    t_coor step;
+    double perpWallDist;
+    int hit;
+    int side_pos;
+    int wall_height;
+    int line_start;
+    int line_end;
+    int color;
+}   t_dda;
 
 typedef struct s5_list
 {
@@ -143,19 +151,20 @@ typedef struct s5_list
     t_mlx   mlx;
     t_gps   gps;
     t_map map;
-    t_ray raycast;
+    t_dda dda;
 }   t_general;
 
-//map_parsing.c
+//program_main.c
 
 void    error(void);
 int     main(int argc, char **argv);
+
+//map_parsing.c
+
 int     map_parsing(t_input *args);
-int     check_charset(char c, char const *set);
 void    args_definer(t_input *args);
-int     **ft_realloc(int **tab);
 void    splitter_alloc(t_input *args);
-void    map_creator(t_input *args);
+void    initialise_args(t_input *args);
 
 //general_functions_1.c
 
@@ -187,16 +196,20 @@ int       check_angle(float angle, float a_max, float a_min);
 
 //distance_calculations.c
 
-char    check_collision(t_general *mother, t_float inter);
-float   horizontal_intersection_calculation(t_general *mother);
-float   vertical_intersection_calculation(t_general *mother);
-void    check_intersection(t_general *mother);
+void    initial_side_distance(t_general *mother);
+void    collision_calculator(t_general *mother);
+void    distance_calculations(t_general *mother);
 
 //raycasting.c
 
-void    set_texture(t_general *mother);
-void    draw_slice(t_general *mother, float slice);
-void    draw_rays(t_general *mother);
-void draw_map_ray(t_general *mother);
+void    draw_wall(t_general *mother);
+void    draw_line(t_general *mother);
+void    raycasting(t_general *mother);
+void    movement(t_general *mother);
+
+//coloring.c
+
+void    define_wall_color(t_general *mother);
+void affiliate_texture(t_general *mother, t_text *texture);
 
 #endif

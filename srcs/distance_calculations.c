@@ -6,70 +6,71 @@
 /*   By: vincentbaron <vincentbaron@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/26 15:07:46 by vbaron            #+#    #+#             */
-/*   Updated: 2020/11/06 10:22:57 by vincentbaro      ###   ########.fr       */
+/*   Updated: 2020/12/01 14:37:53 by vincentbaro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-char check_collision(t_general *mother, t_float inter)
+void    initial_side_distance(t_general *mother)
 {
-    if(mother->args.matrix[(int)inter.y][(int)inter.x] == 0)
-        return(-1);
-    return (mother->args.matrix[(int)inter.y][(int)inter.x]);
-}
-
-float    horizontal_intersection_calculation(t_general *mother)
-{
-    t_float inter;
-    t_float offset;
-
-    offset.x = 1.0 / tanf(mother->raycast.angle);
-    offset.y = 1.0;
-
-    inter.y = (int)(mother->gps.pos.y) + (mother->raycast.angle < PI && mother->raycast.angle > 0 ? -0.01 : +1);
-    inter.x = mother->gps.pos.x + (mother->gps.pos.y - inter.y) / tanf(mother->raycast.angle);
-    while(check_collision(mother, inter) == -1)
+    if (mother->gps.ray.x < 0)
     {
-        inter.y += (mother->raycast.angle < PI && mother->raycast.angle > 0 ? -offset.y : +offset.y);
-        inter.x += offset.x;
+        mother->dda.step.x = -1;
+        mother->dda.side.x = (mother->gps.pos.x - mother->dda.map.x) * mother->dda.delta.x;
     }
-    return(inter.y / sinf(mother->raycast.angle));
-}
-
-float    vertical_intersection_calculation(t_general *mother)
-{
-    t_float inter;
-    t_float offset;
-
-    offset.x = 1.0;
-    offset.y = 1.0 / tanf(mother->raycast.angle);
-
-    inter.x = (int)(mother->gps.pos.x) + (mother->raycast.angle < PI / 2 && mother->raycast.angle > (3 * PI / 2) ? +1 : -0.01);
-    inter.y = mother->gps.pos.y + (mother->gps.pos.x - inter.x) / tanf(mother->raycast.angle);
-    while(check_collision(mother, inter) == -1)
+    else
     {
-        inter.x += (mother->raycast.angle < PI / 2 && mother->raycast.angle > (3 * PI / 2) ? +offset.x : -offset.x);
-        inter.y += offset.y;
+        mother->dda.step.x = 1;
+        mother->dda.side.x = (mother->dda.map.x + 1.0 - mother->gps.pos.x) * mother->dda.delta.x;
     }
-    return(inter.y / sinf(mother->raycast.angle));
+    if (mother->gps.ray.y < 0)
+    {
+        mother->dda.step.y = -1;
+        mother->dda.side.y = (mother->gps.pos.y - mother->dda.map.y) * mother->dda.delta.y;
+    }
+    else
+    {
+        mother->dda.step.y = 1;
+        mother->dda.side.y = (mother->dda.map.y + 1.0 - mother->gps.pos.y) * mother->dda.delta.y;
+    }
 }
 
-void    check_intersection(t_general *mother)
+void    collision_calculator(t_general *mother)
 {
-    float Horizontal_inter = horizontal_intersection_calculation(mother);
-    float vertical_inter = vertical_intersection_calculation(mother);
+    while (mother->dda.hit == 0)
+    {
+        if (mother->dda.side.x < mother->dda.side.y)
+        {
+            mother->dda.side.x += mother->dda.delta.x;
+            mother->dda.map.x += mother->dda.step.x;
+            mother->dda.side_pos = 0;
+        }
+        else
+        {
+            mother->dda.side.y += mother->dda.delta.y;
+            mother->dda.map.y += mother->dda.step.y;
+            mother->dda.side_pos = 1;
+        }
+        if (mother->args.matrix[mother->dda.map.y][mother->dda.map.x] != '0')
+            mother->dda.hit = 1;
+    }
 
-    (void)Horizontal_inter;
-    (void)vertical_inter;
-
-    ft_putchar_fd('\n', 1);
-    if (vertical_intersection_calculation(mother) == horizontal_intersection_calculation(mother))
-        //draw_intersection
-    if (vertical_intersection_calculation(mother) >= horizontal_intersection_calculation(mother))
-        mother->raycast.dist_inter = horizontal_intersection_calculation(mother);
-    if (vertical_intersection_calculation(mother) < horizontal_intersection_calculation(mother))
-        mother->raycast.dist_inter = vertical_intersection_calculation(mother);
-    mother->raycast.pos_inter.x = mother->raycast.dist_inter * cosf(mother->raycast.angle);
-    mother->raycast.pos_inter.y = mother->raycast.dist_inter * sinf(mother->raycast.angle);
 }
+
+void    distance_calculations(t_general *mother)
+{
+    mother->dda.map.x = (int)mother->gps.pos.x;
+    mother->dda.map.y = (int)mother->gps.pos.y;
+    mother->dda.delta.x = fabs(1 / mother->gps.ray.x);
+    mother->dda.delta.y = fabs(1 / mother->gps.ray.y);
+    mother->dda.hit = 0;
+    initial_side_distance(mother);
+    collision_calculator(mother);
+    if (mother->dda.side_pos == 0)
+        mother->dda.perpWallDist = (mother->dda.map.x - mother->gps.pos.x + (1 - mother->dda.step.x) / 2) / mother->gps.ray.x;
+    else
+        mother->dda.perpWallDist = (mother->dda.map.y - mother->gps.pos.y + (1 - mother->dda.step.y) / 2) / mother->gps.ray.y;
+}
+
+

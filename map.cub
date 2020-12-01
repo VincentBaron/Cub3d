@@ -1,13 +1,14 @@
-R 600 600
-NO ./path_to_the_north_texture
+R 1000 1000
 
-SO ./path_to_the_south_texture
+NO 255,0,0
 
-WE ./path_to_the_west_texture
+SO 255,0,0
 
-EA ./path_to_the_east_texture
+WE 255,0,0
 
-S ./path_to_the_sprite_texture
+EA 255,0,0
+
+S 255,0,0
 
 F 220,100,0
 

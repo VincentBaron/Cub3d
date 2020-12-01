@@ -6,11 +6,22 @@
 /*   By: vincentbaron <vincentbaron@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/23 19:02:56 by vbaron            #+#    #+#             */
-/*   Updated: 2020/10/16 17:29:16 by vincentbaro      ###   ########.fr       */
+/*   Updated: 2020/11/30 18:38:14 by vincentbaro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
+void    initialise_args(t_input *args)
+{
+    args->NO.RGB[0] = -1;
+    args->SO.RGB[0] = -1;
+    args->WE.RGB[0] = -1;
+    args->EA.RGB[0] = -1;
+    args->S.RGB[0] = -1;
+    args->F.RGB[0] = -1;
+    args->C.RGB[0] = -1;
+}
 
 void    splitter_alloc(t_input *args)
 {
@@ -77,6 +88,7 @@ int    map_parsing(t_input *args)
     args->index = "1RNSWEXFC";
     (args->map) = ft_strdup("");
 
+    initialise_args(args);
     while ((res = get_next_line(args->fd, &(args->line))) != 0)
     {
         if (res == -1)
