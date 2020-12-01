@@ -6,7 +6,7 @@
 /*   By: vincentbaron <vincentbaron@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/18 14:03:48 by vbaron            #+#    #+#             */
-/*   Updated: 2020/12/01 09:48:25 by vincentbaro      ###   ########.fr       */
+/*   Updated: 2020/12/01 18:48:27 by vincentbaro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@
 # define RIGHT 2
 # define ROT_RIGHT 124
 # define ROT_LEFT 123
-# define MOVE_SPEED 1
-# define ROT_SPEED 1
+# define MOVE_SPEED 0.25
+# define ROT_SPEED 0.05
 
 //MATHS
 

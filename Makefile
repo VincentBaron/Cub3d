@@ -6,7 +6,7 @@
 #    By: vincentbaron <vincentbaron@student.42.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/24 17:36:15 by vbaron            #+#    #+#              #
-#    Updated: 2020/12/01 11:19:06 by vincentbaro      ###   ########.fr        #
+#    Updated: 2020/12/01 18:12:57 by vincentbaro      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,8 +79,7 @@ clean:
 		rm -f $(OBJS)		
 	rm -f $(OBJS)/*.o
 	rm -rf $(DIR_O)	
-	make clean -C $(LIBFT_DIR)	
-	make clean -C $(MLX_DIR)
+	make clean -C $(LIBFT_DIR)
 
 fclean: clean
 	rm -rf $(NAME)

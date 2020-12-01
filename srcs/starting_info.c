@@ -6,7 +6,7 @@
 /*   By: vincentbaron <vincentbaron@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/24 14:51:16 by vbaron            #+#    #+#             */
-/*   Updated: 2020/12/01 17:13:39 by vincentbaro      ###   ########.fr       */
+/*   Updated: 2020/12/01 18:48:01 by vincentbaro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,5 @@ void    position_info(t_general *mother)
         i++;
     }
     find_direction(mother);
+    mother->args.matrix[(int)(mother->gps.pos.y)][(int)(mother->gps.pos.x)] = '0';
 }
