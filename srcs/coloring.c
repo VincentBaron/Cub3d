@@ -6,7 +6,7 @@
 /*   By: vincentbaron <vincentbaron@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 17:46:54 by vincentbaro       #+#    #+#             */
-/*   Updated: 2020/12/02 10:51:51 by vincentbaro      ###   ########.fr       */
+/*   Updated: 2020/12/02 11:08:24 by vincentbaro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ void    define_wall_color(t_general *mother)
     color = 0;
     if (mother->args.matrix[mother->dda.map.y][mother->dda.map.x] == '1')
     {
-        if (mother->dda.side_pos == 0)
-            (mother->gps.pos.y > mother->gps.ray.y) ? affiliate_texture(mother, &(mother->args.NO)) : affiliate_texture(mother, &(mother->args.SO)); 
-        else if (mother->dda.side_pos == 1)
+        if (mother->dda.side_pos == 1)
+            (mother->gps.ray.y < 0) ? affiliate_texture(mother, &(mother->args.NO)) : affiliate_texture(mother, &(mother->args.SO)); 
+        else if (mother->dda.side_pos == 0)
         {
-            (mother->gps.pos.x > mother->gps.ray.x) ? affiliate_texture(mother, &(mother->args.WE)) : affiliate_texture(mother, &(mother->args.EA));
+            (mother->gps.ray.x < 0) ? affiliate_texture(mother, &(mother->args.WE)) : affiliate_texture(mother, &(mother->args.EA));
             color = color / 2;
         }
         
