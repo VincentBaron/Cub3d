@@ -6,7 +6,7 @@
 /*   By: vincentbaron <vincentbaron@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/26 17:27:55 by vbaron            #+#    #+#             */
-/*   Updated: 2020/12/02 09:35:38 by vincentbaro      ###   ########.fr       */
+/*   Updated: 2020/12/02 14:36:51 by vincentbaro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,21 @@ void    movement(t_general *mother)
         mother->gps.plane.x = mother->gps.plane.x * cosf(ROT_SPEED) - mother->gps.plane.y * sinf(ROT_SPEED);
         mother->gps.plane.y = old_plane_x * sinf(ROT_SPEED) + mother->gps.plane.y * cosf(ROT_SPEED);
     }
+    if (mother->gps.move.x == -1)
+    {
+        if (check_charset(mother->args.matrix[(int)(mother->gps.pos.y)][(int)(mother->gps.pos.x - mother->gps.plane.x * MOVE_SPEED)], "12 ") == -1)
+            mother->gps.pos.x -= mother->gps.plane.x * MOVE_SPEED;
+        if (check_charset(mother->args.matrix[(int)(mother->gps.pos.y - mother->gps.plane.y * MOVE_SPEED)][(int)(mother->gps.pos.x)], "12 ") == -1)
+            mother->gps.pos.y -= mother->gps.plane.y * MOVE_SPEED;
+    }
+    if (mother->gps.move.x == 1)
+    {
+        if (check_charset(mother->args.matrix[(int)(mother->gps.pos.y)][(int)(mother->gps.pos.x - mother->gps.plane.x * MOVE_SPEED)], "12 ") == -1)
+            mother->gps.pos.x += mother->gps.plane.x * MOVE_SPEED;
+        if (check_charset(mother->args.matrix[(int)(mother->gps.pos.y - mother->gps.plane.y * MOVE_SPEED)][(int)(mother->gps.pos.x)], "12 ") == -1)
+            mother->gps.pos.y += mother->gps.plane.y * MOVE_SPEED;
+    }
+
 }
 
 void    raycasting(t_general *mother)
