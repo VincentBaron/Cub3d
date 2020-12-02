@@ -6,7 +6,7 @@
 /*   By: vincentbaron <vincentbaron@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/18 14:03:48 by vbaron            #+#    #+#             */
-/*   Updated: 2020/12/01 18:48:27 by vincentbaro      ###   ########.fr       */
+/*   Updated: 2020/12/02 10:41:08 by vincentbaro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ typedef struct s1_list
     t_double pos;
     t_double dir;
     t_double plane;
-    t_double time;
     t_coor move;
     int rot_left;
     int rot_right;
@@ -158,6 +157,10 @@ typedef struct s5_list
 
 void    error(void);
 int     main(int argc, char **argv);
+
+//initialisation.c
+
+void    init_vars(t_general *mother);
 
 //map_parsing.c
 

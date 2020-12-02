@@ -6,7 +6,7 @@
 /*   By: vincentbaron <vincentbaron@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/26 17:27:55 by vbaron            #+#    #+#             */
-/*   Updated: 2020/12/01 18:43:42 by vincentbaro      ###   ########.fr       */
+/*   Updated: 2020/12/02 09:35:38 by vincentbaro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,16 @@ void    movement(t_general *mother)
     
     if (mother->gps.move.y == -1)
     {
-        if (mother->args.matrix[(int)(mother->gps.pos.y + mother->gps.dir.y * MOVE_SPEED)][(int)(mother->gps.pos.x)] == '0')
+        if (check_charset(mother->args.matrix[(int)(mother->gps.pos.y + mother->gps.dir.y * MOVE_SPEED)][(int)(mother->gps.pos.x)], "12 ") == -1)
             mother->gps.pos.y += mother->gps.dir.y * MOVE_SPEED;
-        if (mother->args.matrix[(int)(mother->gps.pos.y)][(int)(mother->gps.pos.x + mother->gps.dir.x * MOVE_SPEED)] == '0')
+        if (check_charset(mother->args.matrix[(int)(mother->gps.pos.y)][(int)(mother->gps.pos.x + mother->gps.dir.x * MOVE_SPEED)], "12 ") == -1)
             mother->gps.pos.x += mother->gps.dir.x * MOVE_SPEED;
     }
     if (mother->gps.move.y == 1)
     {
-        if (mother->args.matrix[(int)(mother->gps.pos.y)][(int)(mother->gps.pos.x - mother->gps.dir.x * MOVE_SPEED)] == '0')
+        if (check_charset(mother->args.matrix[(int)(mother->gps.pos.y)][(int)(mother->gps.pos.x - mother->gps.dir.x * MOVE_SPEED)], "12 ") == -1)
             mother->gps.pos.x -= mother->gps.dir.x * MOVE_SPEED;
-        if (mother->args.matrix[(int)(mother->gps.pos.y - mother->gps.dir.y * MOVE_SPEED)][(int)(mother->gps.pos.x)] == '0')
+        if (check_charset(mother->args.matrix[(int)(mother->gps.pos.y - mother->gps.dir.y * MOVE_SPEED)][(int)(mother->gps.pos.x)], "12 ") == -1)
             mother->gps.pos.y -= mother->gps.dir.y * MOVE_SPEED;
     }
     if (mother->gps.rot_left == 1)

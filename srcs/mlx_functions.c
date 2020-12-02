@@ -6,7 +6,7 @@
 /*   By: vincentbaron <vincentbaron@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/24 16:49:29 by vbaron            #+#    #+#             */
-/*   Updated: 2020/12/01 18:38:21 by vincentbaro      ###   ########.fr       */
+/*   Updated: 2020/12/02 09:47:15 by vincentbaro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,14 @@ int events_list(t_general *mother)
 
 void    game_start(t_general *mother)
 {    
-     //movement_to_zero(mother);
+     int i;
+    i = 0;
+     while ((mother->args.matrix)[i])
+    {    
+        ft_putstr_fd((mother->args.matrix)[i], 1);
+        ft_putchar_fd('\n', 1);
+        i++;
+    }
      if (!(mother->mlx.ptr = mlx_init()))
           ft_putstr_fd("Error initialising mlx", 2);
      if (!(mother->mlx.win = mlx_new_window(mother->mlx.ptr, mother->args.R[0], mother->args.R[1], "J' aime les Moules Brite")))
