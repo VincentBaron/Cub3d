@@ -6,7 +6,7 @@
 /*   By: vincentbaron <vincentbaron@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 10:34:46 by vincentbaro       #+#    #+#             */
-/*   Updated: 2020/12/02 10:42:23 by vincentbaro      ###   ########.fr       */
+/*   Updated: 2020/12/02 13:31:36 by vincentbaro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,32 @@ void    init_vars(t_general *mother)
     mother->gps.camera.y = 0;
     mother->gps.ray.x = 0;
     mother->gps.ray.y = 0;
+    mother->mlx.img_ray.color = 0;
+}
+
+void    init_map(t_general *mother)
+{
+    int map_res;
+    int i;
+    int f;
+    int width;
+    int height;
+
+    map_res = mother->args.R[0] * mother->args.R[1] / 4;
+
+    i = 0;
+    while (mother->args.matrix[i])
+    {
+        f = 0;
+        while (mother->args.matrix[i][f])
+            f++;
+        if (f > width)
+            width = f;
+        i++;
+    }
+    height = i;
+    mother->map.size_x = 10;
+    mother->map.size_y = 10;
+    mother->map.res_x = mother->map.size_x * width;
+    mother->map.res_y = mother->map.size_x * height;
 }

@@ -6,7 +6,7 @@
 /*   By: vincentbaron <vincentbaron@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/19 12:38:34 by vbaron            #+#    #+#             */
-/*   Updated: 2020/12/02 10:48:57 by vincentbaro      ###   ########.fr       */
+/*   Updated: 2020/12/02 12:24:18 by vincentbaro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int main(int argc, char **argv)
     }
     init_vars(&mother);
     map_parsing(&(mother.args));
+    init_map(&mother);
     position_info(&mother);
     game_start(&mother);
     return (0);

@@ -6,7 +6,7 @@
 /*   By: vincentbaron <vincentbaron@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 17:46:54 by vincentbaro       #+#    #+#             */
-/*   Updated: 2020/12/02 11:08:24 by vincentbaro      ###   ########.fr       */
+/*   Updated: 2020/12/02 12:01:05 by vincentbaro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,6 @@ void affiliate_texture(t_general *mother, t_text *texture)
 
 void    define_wall_color(t_general *mother)
 {
-    int color;
-
-    color = 0;
     if (mother->args.matrix[mother->dda.map.y][mother->dda.map.x] == '1')
     {
         if (mother->dda.side_pos == 1)
@@ -32,7 +29,7 @@ void    define_wall_color(t_general *mother)
         else if (mother->dda.side_pos == 0)
         {
             (mother->gps.ray.x < 0) ? affiliate_texture(mother, &(mother->args.WE)) : affiliate_texture(mother, &(mother->args.EA));
-            color = color / 2;
+            mother->mlx.img_ray.color /= 2;
         }
         
     }

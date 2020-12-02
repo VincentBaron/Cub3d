@@ -6,7 +6,7 @@
 /*   By: vincentbaron <vincentbaron@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/18 14:03:48 by vbaron            #+#    #+#             */
-/*   Updated: 2020/12/02 10:41:08 by vincentbaro      ###   ########.fr       */
+/*   Updated: 2020/12/02 12:45:23 by vincentbaro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,8 @@ typedef struct s_map
     int size_y;
     int track_x;
     int track_y;
+    int res_x;
+    int res_y;
 } t_map;
 
 typedef struct s_dda
@@ -161,6 +163,7 @@ int     main(int argc, char **argv);
 //initialisation.c
 
 void    init_vars(t_general *mother);
+void    init_map(t_general *mother);
 
 //map_parsing.c
 

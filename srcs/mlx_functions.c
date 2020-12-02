@@ -6,7 +6,7 @@
 /*   By: vincentbaron <vincentbaron@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/24 16:49:29 by vbaron            #+#    #+#             */
-/*   Updated: 2020/12/02 09:47:15 by vincentbaro      ###   ########.fr       */
+/*   Updated: 2020/12/02 13:39:06 by vincentbaro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,27 +54,26 @@ int key_release(int keycode, t_general *mother)
 
 void create_images(t_general *mother)
 {
-     //mother->map.size_x = 20;
-    // mother->map.size_y = 20;
-     //mother->mlx.img_map.image = mlx_new_image(mother->mlx.ptr, mother->args.R[0], mother->args.R[1]);
-     //mother->mlx.img_map.addr = mlx_get_data_addr(mother->mlx.img_map.image, &(mother->mlx.img_map.bpp), &(mother->mlx.img_map.size_line), &(mother->mlx.img_map.endian));
+     if (mother->args.R[0] > 500 && mother->args.R[1] > 500)
+          mother->mlx.img_map.image = mlx_new_image(mother->mlx.ptr, mother->map.res_x, mother->map.res_y);
+     mother->mlx.img_map.addr = mlx_get_data_addr(mother->mlx.img_map.image, &(mother->mlx.img_map.bpp), &(mother->mlx.img_map.size_line), &(mother->mlx.img_map.endian));
      mother->mlx.img_ray.image = mlx_new_image(mother->mlx.ptr, mother->args.R[0], mother->args.R[1]);
      mother->mlx.img_ray.addr = mlx_get_data_addr(mother->mlx.img_ray.image, &(mother->mlx.img_ray.bpp), &(mother->mlx.img_ray.size_line), &(mother->mlx.img_ray.endian));
 }
 
 void display_images(t_general *mother)
 {
-     //mlx_put_image_to_window(mother->mlx.ptr, mother->mlx.win, mother->mlx.img_map.image, 0, 0);
      mlx_put_image_to_window(mother->mlx.ptr, mother->mlx.win, mother->mlx.img_ray.image, 0, 0);    
+     if (mother->args.R[0] > 500 && mother->args.R[1] > 500)
+          mlx_put_image_to_window(mother->mlx.ptr, mother->mlx.win, mother->mlx.img_map.image, 0, 0);
 }
 
 int events_list(t_general *mother)
 {
      create_images(mother);
-     //redefine_position(mother);
-     //draw_map(mother);
-     //draw_player(mother);
      movement(mother);
+     if (mother->args.R[0] > 500 && mother->args.R[1] > 500)
+          draw_map(mother);
      raycasting(mother);
      display_images(mother);
      return (0);
