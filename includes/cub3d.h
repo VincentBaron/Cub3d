@@ -6,7 +6,7 @@
 /*   By: vincentbaron <vincentbaron@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/18 14:03:48 by vbaron            #+#    #+#             */
-/*   Updated: 2020/12/02 14:38:47 by vincentbaro      ###   ########.fr       */
+/*   Updated: 2020/12/02 17:51:54 by vincentbaro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@
 # define RIGHT 2
 # define ROT_RIGHT 124
 # define ROT_LEFT 123
-# define MOVE_SPEED 0.1
+# define MOVE_SPEED 0.05
 # define ROT_SPEED 0.05
 
 //MATHS
@@ -118,6 +118,7 @@ typedef struct s12_list
     void *win;
     t_img img_map;
     t_img img_ray;
+    t_img img_backgrd;
     int slice;
 } t_mlx;
 
@@ -164,6 +165,7 @@ int     main(int argc, char **argv);
 
 void    init_vars(t_general *mother);
 void    init_map(t_general *mother);
+void    set_background(t_general *mother);
 
 //map_parsing.c
 
@@ -216,6 +218,6 @@ void    movement(t_general *mother);
 //coloring.c
 
 void    define_wall_color(t_general *mother);
-void affiliate_texture(t_general *mother, t_text *texture);
+void affiliate_texture(t_img *img, t_text *texture);
 
 #endif

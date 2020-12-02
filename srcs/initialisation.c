@@ -6,7 +6,7 @@
 /*   By: vincentbaron <vincentbaron@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 10:34:46 by vincentbaro       #+#    #+#             */
-/*   Updated: 2020/12/02 13:31:36 by vincentbaro      ###   ########.fr       */
+/*   Updated: 2020/12/02 17:42:07 by vincentbaro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,27 @@ void    init_map(t_general *mother)
     mother->map.size_y = 10;
     mother->map.res_x = mother->map.size_x * width;
     mother->map.res_y = mother->map.size_x * height;
+}
+
+void    set_background(t_general *mother)
+{
+    int x;
+    int y;
+
+    affiliate_texture(&(mother->mlx.img_ray), &(mother->args.C));
+    y = 0;
+    while (y <= mother->args.R[1])
+    {
+        x = 0;
+        while (x <= mother->args.R[0])
+        {
+            if (y > mother->args.R[1] / 2)
+                affiliate_texture(&(mother->mlx.img_ray), &(mother->args.F));
+            draw_pixel(&(mother->mlx.img_ray), x, y);
+            x++;
+        }
+        y++;
+    }
+
+
 }
