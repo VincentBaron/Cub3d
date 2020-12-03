@@ -6,7 +6,7 @@
 /*   By: vincentbaron <vincentbaron@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/18 14:03:48 by vbaron            #+#    #+#             */
-/*   Updated: 2020/12/02 17:51:54 by vincentbaro      ###   ########.fr       */
+/*   Updated: 2020/12/03 16:58:33 by vincentbaro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@
 # include "../Libft/libft.h"
 # include "mlx.h"
 # include "math.h"
+# include <fcntl.h>
+# include <stdio.h>
+# include <string.h>
 
 //LINUX
 /*
@@ -39,6 +42,7 @@
 
 # define KEY_PRESS 2
 # define KEY_RELEASE 3
+# define ESC 53
 # define UP 13
 # define LEFT 0
 # define DOWN 1
@@ -120,6 +124,7 @@ typedef struct s12_list
     t_img img_ray;
     t_img img_backgrd;
     int slice;
+    int esc;
 } t_mlx;
 
 typedef struct s_map
@@ -155,6 +160,20 @@ typedef struct s5_list
     t_map map;
     t_dda dda;
 }   t_general;
+
+/*typedef struct bit_map
+{
+    char    map[2];
+
+} bit_map;
+
+struct BmpHeader {
+    char bitmapSignatureBytes[2] = {'B', 'M'};
+    uint32_t sizeOfBitmapFile = 54 + 786432;
+    uint32_t reservedBytes = 0;
+    uint32_t pixelDataOffset = 54;
+} bmpHeader;*/
+
 
 //program_main.c
 

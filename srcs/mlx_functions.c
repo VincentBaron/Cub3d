@@ -6,7 +6,7 @@
 /*   By: vincentbaron <vincentbaron@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/24 16:49:29 by vbaron            #+#    #+#             */
-/*   Updated: 2020/12/02 17:38:05 by vincentbaro      ###   ########.fr       */
+/*   Updated: 2020/12/03 17:59:58 by vincentbaro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,18 @@ int key_press(int keycode, t_general *mother)
           mother->gps.rot_left = 1;
      else if (keycode == ROT_RIGHT)
           mother->gps.rot_right = 1;
+     else if (keycode == ESC)
+     {
+          mlx_destroy_window(mother->mlx.ptr, mother->mlx.win);
+          exit(1);
+     }
      printf("keycode: %d\n", keycode);
      return (0);
 }
 
 int key_release(int keycode, t_general *mother)
 {
-     mother->gps.event = 0;
+     //mother->gps.event = 0;
      if (keycode == UP)
           mother->gps.move.y = 0;
      else if (keycode == DOWN)
@@ -55,7 +60,6 @@ int key_release(int keycode, t_general *mother)
           mother->gps.rot_left = 0;
      else if (keycode == ROT_RIGHT)
           mother->gps.rot_right = 0;
-     (void)keycode;
      return (0);
 }
 
@@ -79,13 +83,16 @@ void display_images(t_general *mother)
 
 int events_list(t_general *mother)
 {
-     create_images(mother);
-     set_background(mother);
-     movement(mother);
-     if (mother->args.R[0] > 500 && mother->args.R[1] > 500)
-          draw_map(mother);
-     raycasting(mother);
-     display_images(mother);
+     if (mother->mlx.esc == 0)
+     {
+          create_images(mother);
+          set_background(mother);
+          movement(mother);
+          if (mother->args.R[0] > 500 && mother->args.R[1] > 500)
+               draw_map(mother);
+          raycasting(mother);
+          display_images(mother);
+     }
      return (0);
 }
     
@@ -94,12 +101,6 @@ void    game_start(t_general *mother)
 {    
      int i;
     i = 0;
-     while ((mother->args.matrix)[i])
-    {    
-        ft_putstr_fd((mother->args.matrix)[i], 1);
-        ft_putchar_fd('\n', 1);
-        i++;
-    }
      if (!(mother->mlx.ptr = mlx_init()))
           ft_putstr_fd("Error initialising mlx", 2);
      if (!(mother->mlx.win = mlx_new_window(mother->mlx.ptr, mother->args.R[0], mother->args.R[1], "J' aime les Moules Brite")))
