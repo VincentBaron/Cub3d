@@ -6,7 +6,7 @@
 /*   By: vincentbaron <vincentbaron@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/24 14:51:16 by vbaron            #+#    #+#             */
-/*   Updated: 2020/12/02 17:51:00 by vincentbaro      ###   ########.fr       */
+/*   Updated: 2020/12/04 15:52:41 by vincentbaro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void    find_direction(t_general *mother)
 {
-    if (mother->args.matrix[(int)(mother->gps.pos.y)][(int)(mother->gps.pos.x)] == 'N')
+    /*if (mother->args.matrix[(int)(mother->gps.pos.y)][(int)(mother->gps.pos.x)] == 'N')
     {
         mother->gps.dir.x = 0.01;
         mother->gps.dir.y = -0.99;
@@ -41,6 +41,36 @@ void    find_direction(t_general *mother)
         mother->gps.dir.x = -0.99;
         mother->gps.dir.y = 0.01;
         mother->gps.plane.x = 0.01;
+        mother->gps.plane.y = -0.66;
+    }*/
+
+    if (mother->args.matrix[(int)(mother->gps.pos.y)][(int)(mother->gps.pos.x)] == 'N')
+    {
+        mother->gps.dir.x = 0.00;
+        mother->gps.dir.y = -1.00;
+        mother->gps.plane.x = 0.66;
+        mother->gps.plane.y = 0.00;
+
+    }
+    if (mother->args.matrix[(int)(mother->gps.pos.y)][(int)(mother->gps.pos.x)] == 'S')
+    {
+        mother->gps.dir.x = 0.00;
+        mother->gps.dir.y = 1.00;
+        mother->gps.plane.x = -0.66;
+        mother->gps.plane.y = 0.00;
+    }
+    if (mother->args.matrix[(int)(mother->gps.pos.y)][(int)(mother->gps.pos.x)] == 'W')
+    {
+        mother->gps.dir.x = 1.00;
+        mother->gps.dir.y = 0.00;
+        mother->gps.plane.x = 0.00;
+        mother->gps.plane.y = 0.66;
+    }
+    if (mother->args.matrix[(int)(mother->gps.pos.y)][(int)(mother->gps.pos.x)] == 'E')
+    {
+        mother->gps.dir.x = -1.00;
+        mother->gps.dir.y = 0.00;
+        mother->gps.plane.x = 0.00;
         mother->gps.plane.y = -0.66;
     }
 }

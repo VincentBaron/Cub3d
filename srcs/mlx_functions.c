@@ -6,7 +6,7 @@
 /*   By: vincentbaron <vincentbaron@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/24 16:49:29 by vbaron            #+#    #+#             */
-/*   Updated: 2020/12/03 17:59:58 by vincentbaro      ###   ########.fr       */
+/*   Updated: 2020/12/04 15:41:12 by vincentbaro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ char *draw_pixel(t_img *img, int x, int y)
 int key_press(int keycode, t_general *mother)
 {
      mother->gps.event = 1;
+     //movement_to_zero(mother);
      if (keycode == UP)
           mother->gps.move.y = -1;
      else if (keycode == DOWN)
@@ -61,6 +62,15 @@ int key_release(int keycode, t_general *mother)
      else if (keycode == ROT_RIGHT)
           mother->gps.rot_right = 0;
      return (0);
+}
+
+void movement_to_zero(t_general *mother)
+{
+     mother->gps.move.y = 0;
+     mother->gps.move.y = 0;
+     mother->gps.move.x = 0;
+     mother->gps.rot_left = 0;
+     mother->gps.rot_right = 0;
 }
 
 void create_images(t_general *mother)

@@ -6,7 +6,7 @@
 /*   By: vincentbaron <vincentbaron@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/26 17:27:55 by vbaron            #+#    #+#             */
-/*   Updated: 2020/12/03 17:22:31 by vincentbaro      ###   ########.fr       */
+/*   Updated: 2020/12/04 17:12:11 by vincentbaro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,16 @@ void    movement(t_general *mother)
     
     if (mother->gps.move.y == -1)
     {
-        if (check_charset(mother->args.matrix[(int)(mother->gps.pos.y + mother->gps.dir.y * MOVE_SPEED)][(int)(mother->gps.pos.x)], "12 ") == -1)
+        if (mother->args.matrix[(int)(mother->gps.pos.y + mother->gps.dir.y * MOVE_SPEED)][(int)(mother->gps.pos.x)] == '0')
             mother->gps.pos.y += mother->gps.dir.y * MOVE_SPEED;
-        if (check_charset(mother->args.matrix[(int)(mother->gps.pos.y)][(int)(mother->gps.pos.x + mother->gps.dir.x * MOVE_SPEED)], "12 ") == -1)
+        if (mother->args.matrix[(int)(mother->gps.pos.y)][(int)(mother->gps.pos.x + mother->gps.dir.x * MOVE_SPEED)] == '0')
             mother->gps.pos.x += mother->gps.dir.x * MOVE_SPEED;
     }
     if (mother->gps.move.y == 1)
     {
-        if (check_charset(mother->args.matrix[(int)(mother->gps.pos.y)][(int)(mother->gps.pos.x - mother->gps.dir.x * MOVE_SPEED)], "12 ") == -1)
+        if (mother->args.matrix[(int)(mother->gps.pos.y)][(int)(mother->gps.pos.x - mother->gps.dir.x * MOVE_SPEED)] == '0')
             mother->gps.pos.x -= mother->gps.dir.x * MOVE_SPEED;
-        if (check_charset(mother->args.matrix[(int)(mother->gps.pos.y - mother->gps.dir.y * MOVE_SPEED)][(int)(mother->gps.pos.x)], "12 ") == -1)
+        if (mother->args.matrix[(int)(mother->gps.pos.y - mother->gps.dir.y * MOVE_SPEED)][(int)(mother->gps.pos.x)] == '0')
             mother->gps.pos.y -= mother->gps.dir.y * MOVE_SPEED;
     }
     if (mother->gps.rot_left == 1)
@@ -75,16 +75,16 @@ void    movement(t_general *mother)
     }
     if (mother->gps.move.x == -1)
     {
-        if (check_charset(mother->args.matrix[(int)(mother->gps.pos.y)][(int)(mother->gps.pos.x - mother->gps.plane.x * MOVE_SPEED)], "12 ") == -1)
+        if (mother->args.matrix[(int)(mother->gps.pos.y)][(int)(mother->gps.pos.x - mother->gps.plane.x * MOVE_SPEED)] == '0')
             mother->gps.pos.x -= mother->gps.plane.x * MOVE_SPEED;
-        if (check_charset(mother->args.matrix[(int)(mother->gps.pos.y - mother->gps.plane.y * MOVE_SPEED)][(int)(mother->gps.pos.x)], "12 ") == -1)
+        if (mother->args.matrix[(int)(mother->gps.pos.y - mother->gps.plane.y * MOVE_SPEED)][(int)(mother->gps.pos.x)] == '0')
             mother->gps.pos.y -= mother->gps.plane.y * MOVE_SPEED;
     }
     if (mother->gps.move.x == 1)
     {
-        if (check_charset(mother->args.matrix[(int)(mother->gps.pos.y)][(int)(mother->gps.pos.x - mother->gps.plane.x * MOVE_SPEED)], "12 ") == -1)
+        if (mother->args.matrix[(int)(mother->gps.pos.y)][(int)(mother->gps.pos.x + mother->gps.plane.x * MOVE_SPEED)] == '0')
             mother->gps.pos.x += mother->gps.plane.x * MOVE_SPEED;
-        if (check_charset(mother->args.matrix[(int)(mother->gps.pos.y - mother->gps.plane.y * MOVE_SPEED)][(int)(mother->gps.pos.x)], "12 ") == -1)
+        if (mother->args.matrix[(int)(mother->gps.pos.y + mother->gps.plane.y * MOVE_SPEED)][(int)(mother->gps.pos.x)] == '0')
             mother->gps.pos.y += mother->gps.plane.y * MOVE_SPEED;
     }
 

@@ -6,7 +6,7 @@
 /*   By: vincentbaron <vincentbaron@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/18 14:03:48 by vbaron            #+#    #+#             */
-/*   Updated: 2020/12/03 16:58:33 by vincentbaro      ###   ########.fr       */
+/*   Updated: 2020/12/04 17:18:04 by vincentbaro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@
 # define RIGHT 2
 # define ROT_RIGHT 124
 # define ROT_LEFT 123
-# define MOVE_SPEED 0.05
+# define MOVE_SPEED 0.1
 # define ROT_SPEED 0.05
 
 //MATHS
@@ -209,6 +209,7 @@ int events_list(t_general *mother);
 int key_release(int keycode, t_general *mother);
 int key_press(int keycode, t_general *mother);
 char *draw_pixel(t_img *img, int x, int y);
+void movement_to_zero(t_general *mother);
 
 //map_functions.c
 
