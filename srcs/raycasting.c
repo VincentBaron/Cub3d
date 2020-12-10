@@ -6,7 +6,7 @@
 /*   By: vincentbaron <vincentbaron@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/26 17:27:55 by vbaron            #+#    #+#             */
-/*   Updated: 2020/12/04 17:12:11 by vincentbaro      ###   ########.fr       */
+/*   Updated: 2020/12/10 17:45:31 by vincentbaro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void    draw_line(t_general *mother)
     y = mother->dda.line_start;
     while (y < mother->dda.line_end)
     {
+        if (mother->mlx.img_ray.color == 0)
+            define_texture_color(mother);
         draw_pixel(&(mother->mlx.img_ray), mother->mlx.slice, y);
         y++;
     }

@@ -6,7 +6,7 @@
 /*   By: vincentbaron <vincentbaron@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/18 14:03:48 by vbaron            #+#    #+#             */
-/*   Updated: 2020/12/04 17:18:04 by vincentbaro      ###   ########.fr       */
+/*   Updated: 2020/12/10 17:57:38 by vincentbaro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,7 @@ typedef struct s_map
     int track_y;
     int res_x;
     int res_y;
+    t_double wall_pos;
 } t_map;
 
 typedef struct s_dda
@@ -239,5 +240,10 @@ void    movement(t_general *mother);
 
 void    define_wall_color(t_general *mother);
 void affiliate_texture(t_img *img, t_text *texture);
+
+//texture.c
+
+void    define_texture_color(t_general *mother);
+void    wall_position_calculation(t_general *mother);
 
 #endif
