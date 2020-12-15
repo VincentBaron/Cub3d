@@ -6,7 +6,7 @@
 /*   By: vincentbaron <vincentbaron@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 10:34:46 by vincentbaro       #+#    #+#             */
-/*   Updated: 2020/12/10 17:19:02 by vincentbaro      ###   ########.fr       */
+/*   Updated: 2020/12/15 22:06:45 by vincentbaro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void    init_vars(t_general *mother)
     mother->gps.ray.y = 0;
     mother->mlx.img_ray.color = 0;
     mother->mlx.esc = 0;
-    mother->texture.flag = 0;
+    //mother->texture.flag = 0;
 }
 
 void    init_map(t_general *mother)
