@@ -6,7 +6,7 @@
 /*   By: vincentbaron <vincentbaron@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 10:34:46 by vincentbaro       #+#    #+#             */
-/*   Updated: 2020/12/15 22:06:45 by vincentbaro      ###   ########.fr       */
+/*   Updated: 2020/12/21 17:42:31 by vincentbaro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void    set_background(t_general *mother)
     int x;
     int y;
 
-    affiliate_texture(&(mother->mlx.img_ray), &(mother->args.C));
+    affiliate_texture(mother, &(mother->mlx.img_ray), &(mother->args.C));
     y = 0;
     while (y <= mother->args.R[1])
     {
@@ -74,7 +74,7 @@ void    set_background(t_general *mother)
         while (x <= mother->args.R[0])
         {
             if (y > mother->args.R[1] / 2)
-                affiliate_texture(&(mother->mlx.img_ray), &(mother->args.F));
+                affiliate_texture(mother, &(mother->mlx.img_ray), &(mother->args.F));
             draw_pixel(&(mother->mlx.img_ray), x, y);
             x++;
         }

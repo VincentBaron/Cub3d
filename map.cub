@@ -1,6 +1,6 @@
 R 800 800
 
-NO 0,191,255
+NO ./textures/wood.xpm
 
 SO 0,191,255
 

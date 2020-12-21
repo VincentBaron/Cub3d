@@ -6,7 +6,7 @@
 /*   By: vincentbaron <vincentbaron@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/18 14:03:48 by vbaron            #+#    #+#             */
-/*   Updated: 2020/12/10 17:57:38 by vincentbaro      ###   ########.fr       */
+/*   Updated: 2020/12/21 17:11:15 by vincentbaro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,7 @@ typedef struct s12_list
     t_img img_map;
     t_img img_ray;
     t_img img_backgrd;
+    t_img text;
     int slice;
     int esc;
 } t_mlx;
@@ -135,7 +136,8 @@ typedef struct s_map
     int track_y;
     int res_x;
     int res_y;
-    t_double wall_pos;
+    double wall_pos;
+    int text_pos;
 } t_map;
 
 typedef struct s_dda
@@ -161,20 +163,6 @@ typedef struct s5_list
     t_map map;
     t_dda dda;
 }   t_general;
-
-/*typedef struct bit_map
-{
-    char    map[2];
-
-} bit_map;
-
-struct BmpHeader {
-    char bitmapSignatureBytes[2] = {'B', 'M'};
-    uint32_t sizeOfBitmapFile = 54 + 786432;
-    uint32_t reservedBytes = 0;
-    uint32_t pixelDataOffset = 54;
-} bmpHeader;*/
-
 
 //program_main.c
 
@@ -239,11 +227,13 @@ void    movement(t_general *mother);
 //coloring.c
 
 void    define_wall_color(t_general *mother);
-void affiliate_texture(t_img *img, t_text *texture);
+void affiliate_texture(t_general *mother, t_img *img, t_text *texture);
 
 //texture.c
 
 void    define_texture_color(t_general *mother);
 void    wall_position_calculation(t_general *mother);
+void    texture_calculation(t_general *mother);
+void    create_texture(t_general *mother, t_text *texture);
 
 #endif

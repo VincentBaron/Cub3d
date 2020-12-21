@@ -6,7 +6,7 @@
 #    By: vincentbaron <vincentbaron@student.42.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/24 17:36:15 by vbaron            #+#    #+#              #
-#    Updated: 2020/12/02 15:46:16 by vincentbaro      ###   ########.fr        #
+#    Updated: 2020/12/21 17:34:43 by vincentbaro      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ SOURCES = general_functions_1.c \
 		distance_calculations.c \
 		coloring.c \
 		initialisation.c \
+		texture.c \
 
 SRCS = $(addprefix $(DIR_S)/,$(SOURCES))
 OBJS = $(addprefix $(DIR_O)/,$(SOURCES:.c=.o))
