@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialisation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vincentbaron <vincentbaron@student.42.f    +#+  +:+       +#+        */
+/*   By: vbaron <vbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 10:34:46 by vincentbaro       #+#    #+#             */
-/*   Updated: 2020/12/21 17:42:31 by vincentbaro      ###   ########.fr       */
+/*   Updated: 2021/01/04 11:43:20 by vbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,10 @@ void    set_background(t_general *mother)
 
     affiliate_texture(mother, &(mother->mlx.img_ray), &(mother->args.C));
     y = 0;
-    while (y <= mother->args.R[1])
+    while (y < mother->args.R[1])
     {
         x = 0;
-        while (x <= mother->args.R[0])
+        while (x < mother->args.R[0])
         {
             if (y > mother->args.R[1] / 2)
                 affiliate_texture(mother, &(mother->mlx.img_ray), &(mother->args.F));

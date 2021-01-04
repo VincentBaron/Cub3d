@@ -1,6 +1,6 @@
 R 800 800
 
-NO 85,85,85
+NO ./textures/banner.xpm
 
 SO 0,191,255
 

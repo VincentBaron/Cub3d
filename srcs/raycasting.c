@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vincentbaron <vincentbaron@student.42.f    +#+  +:+       +#+        */
+/*   By: vbaron <vbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/26 17:27:55 by vbaron            #+#    #+#             */
-/*   Updated: 2020/12/21 17:36:08 by vincentbaro      ###   ########.fr       */
+/*   Updated: 2021/01/04 16:24:01 by vbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,21 @@
 void    draw_line(t_general *mother)
 {
     int y;
+    double text_pos_y;
+    int step;
 
+    wall_position_calculation(mother);
+    texture_calculation(mother);
     y = mother->dda.line_start;
+    step = mother->mlx.text_height / mother->dda.wall_height;
+    text_pos_y = (mother->dda.line_start - mother->dda.wall_height / 2 + mother->dda.line_end / 2) * step;
     while (y < mother->dda.line_end)
     {
         //if (mother->mlx.img_ray.color == 0)
-        //   define_texture_color(mother);
+        //{
+        //    mother->mlx.img_ray.color = mother->mlx.text.addr[mother->mlx.text_height * (int)text_pos_y + mother->map.text_pos];
+        //    text_pos_y += step;
+        //}
         draw_pixel(&(mother->mlx.img_ray), mother->mlx.slice, y);
         y++;
     }

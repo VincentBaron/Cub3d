@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vincentbaron <vincentbaron@student.42.f    +#+  +:+       +#+        */
+/*   By: vbaron <vbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/18 14:03:48 by vbaron            #+#    #+#             */
-/*   Updated: 2020/12/21 17:11:15 by vincentbaro      ###   ########.fr       */
+/*   Updated: 2021/01/04 14:56:04 by vbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,10 +122,11 @@ typedef struct s12_list
     void *win;
     t_img img_map;
     t_img img_ray;
-    t_img img_backgrd;
     t_img text;
     int slice;
     int esc;
+    int text_width;
+    int text_height;
 } t_mlx;
 
 typedef struct s_map
@@ -231,9 +232,10 @@ void affiliate_texture(t_general *mother, t_img *img, t_text *texture);
 
 //texture.c
 
-void    define_texture_color(t_general *mother);
+void    define_texture_color(t_general *mother, int y);
 void    wall_position_calculation(t_general *mother);
 void    texture_calculation(t_general *mother);
 void    create_texture(t_general *mother, t_text *texture);
+
 
 #endif
