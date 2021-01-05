@@ -6,7 +6,7 @@
 /*   By: vbaron <vbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/26 17:27:55 by vbaron            #+#    #+#             */
-/*   Updated: 2021/01/04 16:24:01 by vbaron           ###   ########.fr       */
+/*   Updated: 2021/01/05 17:07:27 by vbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,29 @@
 void    draw_line(t_general *mother)
 {
     int y;
-    double text_pos_y;
-    int step;
+    double text_pos;
+    int text_y;
+    int text_index;
+    double step;
 
     wall_position_calculation(mother);
-    texture_calculation(mother);
+    if (mother->dda.side_pos == 0 && mother->gps.ray.x > 0)
+        text_index = 0;
+    if (mother->dda.side_pos == 0 && mother->gps.ray.x < 0)
+        text_index = 1;
+    if (mother->dda.side_pos == 1 && mother->gps.ray.x > 0)
+        text_index = 2;
+    if (mother->dda.side_pos == 1 && mother->gps.ray.x < 0)
+        text_index = 3;
+    texture_calculation(mother, text_index);
     y = mother->dda.line_start;
-    step = mother->mlx.text_height / mother->dda.wall_height;
-    text_pos_y = (mother->dda.line_start - mother->dda.wall_height / 2 + mother->dda.line_end / 2) * step;
+    step = 1.0 * mother->args.text[text_index].text_height / mother->dda.wall_height;
+    text_pos = (mother->dda.line_start - mother->dda.wall_height / 2 + mother->dda.line_end / 2) * step;
     while (y < mother->dda.line_end)
     {
-        //if (mother->mlx.img_ray.color == 0)
-        //{
-        //    mother->mlx.img_ray.color = mother->mlx.text.addr[mother->mlx.text_height * (int)text_pos_y + mother->map.text_pos];
-        //    text_pos_y += step;
-        //}
+        text_y = (int)text_pos & (mother->args.text[text_index].text_height - 1);
+        mother->mlx.img_ray.color = *(unsigned int *)(mother->args.text[text_index].img_text.addr + mother->args.text[text_index].img_text.size_line * text_y + mother->map.text_pos * mother->args.text[text_index].img_text.bpp / 8);
+        text_pos += step;
         draw_pixel(&(mother->mlx.img_ray), mother->mlx.slice, y);
         y++;
     }
@@ -110,7 +118,7 @@ void    raycasting(t_general *mother)
         mother->gps.ray.x = mother->gps.dir.x + mother->gps.camera.x * mother->gps.plane.x;
         mother->gps.ray.y = mother->gps.dir.y + mother->gps.camera.x * mother->gps.plane.y;
         distance_calculations(mother);
-        define_wall_color(mother);
+        //define_wall_color(mother);
         draw_wall(mother);
         (mother->mlx.slice)++;
     }

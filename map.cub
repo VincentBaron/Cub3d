@@ -2,13 +2,13 @@ R 800 800
 
 NO ./textures/banner.xpm
 
-SO 0,191,255
+SO ./textures/brick.xpm
 
-WE 0,191,255
+WE ./textures/door.xpm
 
-EA 0,191,255
+EA ./textures/wood.xpm
 
-S 255,0,0
+S ./textures/blue.xpm
 
 F 0,0,0
 

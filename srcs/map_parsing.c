@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_parsing.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vincentbaron <vincentbaron@student.42.f    +#+  +:+       +#+        */
+/*   By: vbaron <vbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/23 19:02:56 by vbaron            #+#    #+#             */
-/*   Updated: 2020/11/30 18:38:14 by vincentbaro      ###   ########.fr       */
+/*   Updated: 2021/01/05 17:28:38 by vbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,17 @@
 
 void    initialise_args(t_input *args)
 {
-    args->NO.RGB[0] = -1;
-    args->SO.RGB[0] = -1;
-    args->WE.RGB[0] = -1;
-    args->EA.RGB[0] = -1;
-    args->S.RGB[0] = -1;
+    args->index[0] = "1";
+    args->index[1] = "R";
+    args->index[2] = "NO";
+    args->index[3] = "SO";
+    args->index[4] = "WE";
+    args->index[5] = "EA";
+    args->index[6] = "S";
+    args->index[7] = "F";
+    args->index[8] = "C";
+    args->index[9] = NULL;
+
     args->F.RGB[0] = -1;
     args->C.RGB[0] = -1;
 }
@@ -39,16 +45,6 @@ void    splitter_alloc(t_input *args)
     {
         while (*splitter && x < 3)
         {
-            if (args->index_i == 2)
-                args->NO.RGB[x] = ft_atoi(*splitter);
-            if (args->index_i == 3)
-                args->SO.RGB[x] = ft_atoi(*splitter);
-            if (args->index_i == 4)
-                args->WE.RGB[x] = ft_atoi(*splitter);
-            if (args->index_i == 5)
-                args->EA.RGB[x] = ft_atoi(*splitter);
-            if (args->index_i == 6)
-                args->S.RGB[x] = ft_atoi(*splitter);
             if (args->index_i == 7)
                 args->F.RGB[x] = ft_atoi(*splitter);
             if (args->index_i == 8)
@@ -59,7 +55,7 @@ void    splitter_alloc(t_input *args)
     }
 }
 
-void     args_definer(t_input *args)
+/*void     args_definer(t_input *args)
 {       
         while (args->line[args->tracker] && !(args->line[args->tracker] >= '0' && args->line[args->tracker] <= '9') && args->line[args->tracker] != '.')
             args->tracker++;
@@ -79,16 +75,39 @@ void     args_definer(t_input *args)
             (args->C.path = ft_substr_bis(args->line, args->tracker, ft_strlen(args->line) - args->tracker));
         if (args->line[args->tracker] >= '0' && args->line[args->tracker] <= '9')
             splitter_alloc(args);
+}*/
+
+void     args_definer(t_input *args, t_general *mother)
+{       
+        while (args->line[args->tracker] && !(args->line[args->tracker] >= '0' && args->line[args->tracker] <= '9') && args->line[args->tracker] != '.')
+            args->tracker++;
+        if (args->index_i >= 2 && args->index_i <= 6)
+            create_texture(args, mother);
+        if (args->index_i == 7 || args->index_i == 8 || args->index_i == 1)
+            splitter_alloc(args);
 }
 
-int    map_parsing(t_input *args)
+int    check_args(t_input *args)
+{
+        int res;
+
+        args->index_i = 0;
+        while(args->index[args->index_i])
+        {
+            if ((res = ft_strncmp(&(args->line[args->tracker]), args->index[args->index_i], ft_strlen(args->index[args->index_i])) == 0))
+                break;
+            args->index_i++;
+        }
+        return (res);
+
+}
+
+int    map_parsing(t_input *args, t_general *mother)
 {
     int res;
-
-    args->index = "1RNSWEXFC";
+    
     (args->map) = ft_strdup("");
-
-    initialise_args(args);
+   initialise_args(args);
     while ((res = get_next_line(args->fd, &(args->line))) != 0)
     {
         if (res == -1)
@@ -96,14 +115,11 @@ int    map_parsing(t_input *args)
         args->tracker = 0;
         while (args->line[args->tracker] == ' ')
             args->tracker++;
-        if ((args->index_i = check_charset(args->line[args->tracker], args->index)) == 0)
+        check_args(args);
+        if (args->index_i == 0)
             create_map(args);
-        else if ((args->index_i = check_charset(args->line[args->tracker], args->index)) > 0)
-        {
-            if (args->index_i == 3 && args->line[args->tracker + 1] == ' ')
-                args->index_i = 6;
-            args_definer(args);
-        }
+        else if (args->index_i > 0)
+            args_definer(args, mother);
         ft_free(args->line);
     }
     create_map(args);

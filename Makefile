@@ -6,7 +6,7 @@
 #    By: vbaron <vbaron@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/24 17:36:15 by vbaron            #+#    #+#              #
-#    Updated: 2021/01/04 11:38:09 by vbaron           ###   ########.fr        #
+#    Updated: 2021/01/05 17:08:04 by vbaron           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,6 @@ SOURCES = general_functions_1.c \
 		map_functions.c \
 		raycasting.c \
 		distance_calculations.c \
-		coloring.c \
 		initialisation.c \
 		texture.c \
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   program_main.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vincentbaron <vincentbaron@student.42.f    +#+  +:+       +#+        */
+/*   By: vbaron <vbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/19 12:38:34 by vbaron            #+#    #+#             */
-/*   Updated: 2020/12/03 16:56:31 by vincentbaro      ###   ########.fr       */
+/*   Updated: 2021/01/05 17:05:08 by vbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int main(int argc, char **argv)
     }
     //save_image(&mother);
     init_vars(&mother);
-    map_parsing(&(mother.args));
+    map_parsing(&(mother.args), &mother);
     init_map(&mother);
     position_info(&mother);
     game_start(&mother);

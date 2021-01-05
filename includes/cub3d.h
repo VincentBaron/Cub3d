@@ -6,7 +6,7 @@
 /*   By: vbaron <vbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/18 14:03:48 by vbaron            #+#    #+#             */
-/*   Updated: 2021/01/04 14:56:04 by vbaron           ###   ########.fr       */
+/*   Updated: 2021/01/05 17:34:23 by vbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,31 +81,6 @@ typedef struct s1_list
     t_double ray;
 }   t_gps;
 
-typedef struct s2_list
-{
-    int RGB[3];
-    char *path;
-} t_text;
-
-typedef struct s3_list
-{
-    int         fd;
-    char        *line;
-    char        *map;
-    char        **matrix;
-    int         R[2];
-    t_text      NO;
-    t_text      SO;
-    t_text      WE;
-    t_text      EA;
-    t_text      S;
-    t_text      F;
-    t_text      C;
-    char        *index;
-    int         index_i;
-    int         tracker;
-} t_input;
-
 typedef struct s_img
 {
     void *image;
@@ -115,6 +90,34 @@ typedef struct s_img
     int size_line;
     unsigned int color;
 } t_img;
+
+typedef struct sw_list
+{
+    char *path;
+    int text_width;
+    int text_height;
+    t_img img_text;
+} t_text;
+
+typedef struct s2_list
+{
+    int RGB[3];
+} t_rgb;
+
+typedef struct s3_list
+{
+    int         fd;
+    char        *line;
+    char        *map;
+    char        **matrix;
+    int         R[2];
+    t_text      text[5];
+    t_rgb       F;
+    t_rgb       C;
+    int         index_i;
+    char        *index[10];
+    int         tracker;
+} t_input;
 
 typedef struct s12_list
 {
@@ -178,8 +181,8 @@ void    set_background(t_general *mother);
 
 //map_parsing.c
 
-int     map_parsing(t_input *args);
-void    args_definer(t_input *args);
+int    map_parsing(t_input *args, t_general *mother);
+void     args_definer(t_input *args, t_general *mother);
 void    splitter_alloc(t_input *args);
 void    initialise_args(t_input *args);
 
@@ -234,8 +237,8 @@ void affiliate_texture(t_general *mother, t_img *img, t_text *texture);
 
 void    define_texture_color(t_general *mother, int y);
 void    wall_position_calculation(t_general *mother);
-void    texture_calculation(t_general *mother);
-void    create_texture(t_general *mother, t_text *texture);
+void    texture_calculation(t_general *mother, int text_index);
+void    create_texture(t_input *args, t_general *mother);
 
 
 #endif
