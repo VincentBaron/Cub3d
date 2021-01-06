@@ -6,7 +6,7 @@
 /*   By: vbaron <vbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/23 19:02:56 by vbaron            #+#    #+#             */
-/*   Updated: 2021/01/05 17:28:38 by vbaron           ###   ########.fr       */
+/*   Updated: 2021/01/06 13:53:19 by vbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,10 @@ void    splitter_alloc(t_input *args)
 
 void     args_definer(t_input *args, t_general *mother)
 {       
+        if (!(mother->mlx.ptr = mlx_init()))
+          ft_putstr_fd("Error initialising mlx", 2);
+     if (!(mother->mlx.win = mlx_new_window(mother->mlx.ptr, mother->args.R[0], mother->args.R[1], "J' aime les Moules Brite")))
+          ft_putstr_fd("Error creating window", 2);
         while (args->line[args->tracker] && !(args->line[args->tracker] >= '0' && args->line[args->tracker] <= '9') && args->line[args->tracker] != '.')
             args->tracker++;
         if (args->index_i >= 2 && args->index_i <= 6)

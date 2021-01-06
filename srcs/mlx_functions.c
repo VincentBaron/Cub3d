@@ -6,7 +6,7 @@
 /*   By: vbaron <vbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/24 16:49:29 by vbaron            #+#    #+#             */
-/*   Updated: 2021/01/04 11:41:14 by vbaron           ###   ########.fr       */
+/*   Updated: 2021/01/06 15:24:28 by vbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,10 +110,6 @@ void    game_start(t_general *mother)
 {    
      int i;
     i = 0;
-     if (!(mother->mlx.ptr = mlx_init()))
-          ft_putstr_fd("Error initialising mlx", 2);
-     if (!(mother->mlx.win = mlx_new_window(mother->mlx.ptr, mother->args.R[0], mother->args.R[1], "J' aime les Moules Brite")))
-          ft_putstr_fd("Error creating window", 2);
      create_images(mother);
      mlx_hook(mother->mlx.win, KEY_PRESS, 1L<<0, &key_press, mother);
      mlx_hook(mother->mlx.win, KEY_RELEASE, 1L<<1, &key_release, mother);
