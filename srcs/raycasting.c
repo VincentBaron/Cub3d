@@ -6,7 +6,7 @@
 /*   By: vbaron <vbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/26 17:27:55 by vbaron            #+#    #+#             */
-/*   Updated: 2021/01/05 17:07:27 by vbaron           ###   ########.fr       */
+/*   Updated: 2021/01/06 11:39:51 by vbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,13 @@ void    draw_line(t_general *mother)
     int text_index;
     double step;
 
-    wall_position_calculation(mother);
-    if (mother->dda.side_pos == 0 && mother->gps.ray.x > 0)
+    if (mother->dda.side_pos == 1 && mother->gps.ray.y < 0)
         text_index = 0;
-    if (mother->dda.side_pos == 0 && mother->gps.ray.x < 0)
+    if (mother->dda.side_pos == 1 && mother->gps.ray.y > 0)
         text_index = 1;
-    if (mother->dda.side_pos == 1 && mother->gps.ray.x > 0)
+    if (mother->dda.side_pos == 0 && mother->gps.ray.x > 0)
         text_index = 2;
-    if (mother->dda.side_pos == 1 && mother->gps.ray.x < 0)
+    if (mother->dda.side_pos == 0 && mother->gps.ray.x < 0)
         text_index = 3;
     texture_calculation(mother, text_index);
     y = mother->dda.line_start;
@@ -36,8 +35,8 @@ void    draw_line(t_general *mother)
     while (y < mother->dda.line_end)
     {
         text_y = (int)text_pos & (mother->args.text[text_index].text_height - 1);
-        mother->mlx.img_ray.color = *(unsigned int *)(mother->args.text[text_index].img_text.addr + mother->args.text[text_index].img_text.size_line * text_y + mother->map.text_pos * mother->args.text[text_index].img_text.bpp / 8);
         text_pos += step;
+        mother->mlx.img_ray.color = *(unsigned int *)(mother->args.text[text_index].img_text.addr + mother->args.text[text_index].img_text.size_line * text_y + mother->map.text_pos * mother->args.text[text_index].img_text.bpp / 8);
         draw_pixel(&(mother->mlx.img_ray), mother->mlx.slice, y);
         y++;
     }
@@ -118,6 +117,7 @@ void    raycasting(t_general *mother)
         mother->gps.ray.x = mother->gps.dir.x + mother->gps.camera.x * mother->gps.plane.x;
         mother->gps.ray.y = mother->gps.dir.y + mother->gps.camera.x * mother->gps.plane.y;
         distance_calculations(mother);
+        wall_position_calculation(mother);
         //define_wall_color(mother);
         draw_wall(mother);
         (mother->mlx.slice)++;

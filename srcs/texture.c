@@ -6,7 +6,7 @@
 /*   By: vbaron <vbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 16:38:29 by vincentbaro       #+#    #+#             */
-/*   Updated: 2021/01/05 16:57:12 by vbaron           ###   ########.fr       */
+/*   Updated: 2021/01/06 11:10:38 by vbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,9 @@ void    wall_position_calculation(t_general *mother)
 {
     if (mother->dda.side_pos == 0)
         mother->map.wall_pos = mother->gps.pos.y + mother->dda.perpWallDist * mother->gps.ray.y;
-    mother->map.wall_pos -= mother->dda.map.y;
+    else
+        mother->map.wall_pos = mother->gps.pos.x + mother->dda.perpWallDist * mother->gps.ray.x;
+    mother->map.wall_pos -= floor(mother->map.wall_pos);
 }
 
 void    texture_calculation(t_general *mother, int text_index)
@@ -40,3 +42,4 @@ void    texture_calculation(t_general *mother, int text_index)
     if (mother->dda.side_pos == 1 && mother->gps.ray.y < 0)
         mother->map.text_pos = mother->args.text[text_index].text_width - mother->map.text_pos - 1;
 }
+
