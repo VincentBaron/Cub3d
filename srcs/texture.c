@@ -6,7 +6,7 @@
 /*   By: vbaron <vbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 16:38:29 by vincentbaro       #+#    #+#             */
-/*   Updated: 2021/01/06 15:41:38 by vbaron           ###   ########.fr       */
+/*   Updated: 2021/01/07 11:26:22 by vbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,23 @@
 void    create_texture(t_input *args, t_general *mother)
 { 
     int index;
+    int i;
 
     index = args->index_i - 2;
 
     args->text[index].path = ft_substr_bis(args->line, args->tracker, ft_strlen(args->line) - args->tracker);
     args->text[index].img_text.image = mlx_xpm_file_to_image(mother->mlx.ptr, args->text[index].path, &(args->text[index].text_width), &(args->text[index].text_height));
     args->text[index].img_text.addr = mlx_get_data_addr(args->text[index].img_text.image, &(args->text[index].img_text.bpp), &(args->text[index].img_text.size_line), &(args->text[index].img_text.endian));
+
+    if (index == 4)
+    {
+        i = 0;
+        while (args->text[index].img_text.addr[i])
+        {
+            args->text[index].img_text.addr[i] = (char)0x00FFFFFF;
+            i++;
+        }
+    } 
 }
 
 void    wall_position_calculation(t_general *mother)
