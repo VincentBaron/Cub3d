@@ -6,7 +6,7 @@
 /*   By: vbaron <vbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/18 14:03:48 by vbaron            #+#    #+#             */
-/*   Updated: 2021/01/06 12:59:15 by vbaron           ###   ########.fr       */
+/*   Updated: 2021/01/07 17:33:58 by vbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,6 +159,15 @@ typedef struct s_dda
     int color;
 }   t_dda;
 
+typedef struct s_prite
+{
+    t_coor *elem;
+    int *zbuffer;
+    int sprite_count;
+    int *sprite_order;
+    int *sprite_distance;
+} t_sprite;
+
 typedef struct s5_list
 {
     t_input args;
@@ -166,6 +175,7 @@ typedef struct s5_list
     t_gps   gps;
     t_map map;
     t_dda dda;
+    t_sprite sprite;
 }   t_general;
 
 //program_main.c
@@ -239,6 +249,12 @@ void    define_texture_color(t_general *mother, int y);
 void    wall_position_calculation(t_general *mother);
 void    texture_calculation(t_general *mother, int text_index);
 void    create_texture(t_input *args, t_general *mother);
+
+//sprites.c
+
+void    create_sprites(t_general *mother);
+void    sprite_display(t_general *mother);
+void    sort_sprites(t_general *mother);
 
 
 #endif

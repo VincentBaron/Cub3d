@@ -6,7 +6,7 @@
 /*   By: vbaron <vbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/23 19:02:56 by vbaron            #+#    #+#             */
-/*   Updated: 2021/01/07 11:42:44 by vbaron           ###   ########.fr       */
+/*   Updated: 2021/01/07 15:31:37 by vbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,28 +54,6 @@ void    splitter_alloc(t_input *args)
         }
     }
 }
-
-/*void     args_definer(t_input *args)
-{       
-        while (args->line[args->tracker] && !(args->line[args->tracker] >= '0' && args->line[args->tracker] <= '9') && args->line[args->tracker] != '.')
-            args->tracker++;
-        if (args->line[args->tracker] == '.' && args->index_i == 2)
-            (args->NO.path = ft_substr_bis(args->line, args->tracker, ft_strlen(args->line) - args->tracker));
-        if (args->line[args->tracker] == '.' && args->index_i == 3)
-            (args->SO.path = ft_substr_bis(args->line, args->tracker, ft_strlen(args->line) - args->tracker));
-        if (args->line[args->tracker] == '.' && args->index_i == 4)
-            (args->WE.path = ft_substr_bis(args->line, args->tracker, ft_strlen(args->line) - args->tracker));
-        if (args->line[args->tracker] == '.' && args->index_i == 5)
-            (args->EA.path = ft_substr_bis(args->line, args->tracker, ft_strlen(args->line) - args->tracker));
-        if (args->line[args->tracker] == '.' && args->index_i == 6)
-            (args->S.path = ft_substr_bis(args->line, args->tracker, ft_strlen(args->line) - args->tracker));
-        if (args->line[args->tracker] == '.' && args->index_i == 7)
-            (args->F.path = ft_substr_bis(args->line, args->tracker, ft_strlen(args->line) - args->tracker));
-        if (args->line[args->tracker] == '.' && args->index_i == 8)
-            (args->C.path = ft_substr_bis(args->line, args->tracker, ft_strlen(args->line) - args->tracker));
-        if (args->line[args->tracker] >= '0' && args->line[args->tracker] <= '9')
-            splitter_alloc(args);
-}*/
 
 void     args_definer(t_input *args, t_general *mother)
 {       
@@ -128,6 +106,7 @@ int    map_parsing(t_input *args, t_general *mother)
     }
     create_map(args);
     args->matrix = ft_split(args->map, "x");
+    create_sprites(mother);
     ft_free(args->map);
     return (1);
 }

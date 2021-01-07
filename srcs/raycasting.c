@@ -6,7 +6,7 @@
 /*   By: vbaron <vbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/26 17:27:55 by vbaron            #+#    #+#             */
-/*   Updated: 2021/01/06 15:47:39 by vbaron           ###   ########.fr       */
+/*   Updated: 2021/01/07 17:34:07 by vbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,14 @@ void    draw_line(t_general *mother)
         text_index = 2;
     if (mother->dda.side_pos == 0 && mother->gps.ray.x < 0)
         text_index = 3;
+    if (mother->args.matrix[mother->dda.map.y][mother->dda.map.x] == '2')
+        text_index = 4;
     wall_position_calculation(mother);
     texture_calculation(mother, text_index);
     y = mother->dda.line_start;
     step = 1.0 * mother->args.text[text_index].text_height / mother->dda.wall_height;
     text_pos = (mother->dda.line_start - mother->args.R[1] / 2 + mother->dda.wall_height / 2) * step;
+    //text_pos = (mother->dda.line_start - mother->dda.wall_height / 2 + mother->dda.wall_height / 2) * step;
     while (y < mother->dda.line_end)
     {
         text_y = (int)text_pos & (mother->args.text[text_index].text_height - 1);
@@ -119,6 +122,8 @@ void    raycasting(t_general *mother)
         mother->gps.ray.y = mother->gps.dir.y + mother->gps.camera.x * mother->gps.plane.y;
         distance_calculations(mother);
         draw_wall(mother);
+        mother->sprite.zbuffer[mother->mlx.slice] = mother->dda.perpWallDist;
         (mother->mlx.slice)++;
+        sprite_display(mother);
     }
 }
