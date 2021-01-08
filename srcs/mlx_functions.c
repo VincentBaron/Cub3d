@@ -6,7 +6,7 @@
 /*   By: vbaron <vbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/24 16:49:29 by vbaron            #+#    #+#             */
-/*   Updated: 2021/01/06 15:24:28 by vbaron           ###   ########.fr       */
+/*   Updated: 2021/01/08 10:39:59 by vbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ void create_images(t_general *mother)
      }
      mother->mlx.img_ray.image = mlx_new_image(mother->mlx.ptr, mother->args.R[0], mother->args.R[1]);
      mother->mlx.img_ray.addr = mlx_get_data_addr(mother->mlx.img_ray.image, &(mother->mlx.img_ray.bpp), &(mother->mlx.img_ray.size_line), &(mother->mlx.img_ray.endian));
+     //mother->mlx.img_sprite.image = mlx_new_image(mother->mlx.ptr, mother->args.text[4].text_width, mother->args.text[4].text_height);
+     //mother->mlx.img_sprite.addr = mlx_get_data_addr(mother->mlx.img_sprite.image, &(mother->mlx.img_sprite.bpp), &(mother->mlx.img_sprite.size_line), &(mother->mlx.img_sprite.endian));
 }
 
 void display_images(t_general *mother)

@@ -6,7 +6,7 @@
 /*   By: vbaron <vbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/26 15:07:46 by vbaron            #+#    #+#             */
-/*   Updated: 2021/01/06 15:31:32 by vbaron           ###   ########.fr       */
+/*   Updated: 2021/01/08 10:46:50 by vbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void    collision_calculator(t_general *mother)
             mother->dda.map.y += mother->dda.step.y;
             mother->dda.side_pos = 1;
         }
-        if (mother->args.matrix[mother->dda.map.y][mother->dda.map.x] != '0')
+        if (mother->args.matrix[mother->dda.map.y][mother->dda.map.x] == '1')
             mother->dda.hit = 1;
     }
 

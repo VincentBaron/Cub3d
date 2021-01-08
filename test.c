@@ -27,7 +27,7 @@ int main()
 	}
 
 	i = 0;
-	while (tab[i++])
+	while (tab[i++] < 5)
 		printf("tab[i]: %d", tab[i]);
 	return (0);
 }

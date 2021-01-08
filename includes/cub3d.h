@@ -6,7 +6,7 @@
 /*   By: vbaron <vbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/18 14:03:48 by vbaron            #+#    #+#             */
-/*   Updated: 2021/01/07 17:33:58 by vbaron           ###   ########.fr       */
+/*   Updated: 2021/01/08 10:36:17 by vbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,7 @@ typedef struct s12_list
     void *win;
     t_img img_map;
     t_img img_ray;
+    t_img img_sprite;
     t_img text;
     int slice;
     int esc;
@@ -166,6 +167,12 @@ typedef struct s_prite
     int sprite_count;
     int *sprite_order;
     int *sprite_distance;
+    int spriteScreen;
+    int sprite_height;
+    t_coor draw_start;
+    t_coor draw_end;
+    int sprite_width;
+    t_coor tex;
 } t_sprite;
 
 typedef struct s5_list
@@ -254,7 +261,8 @@ void    create_texture(t_input *args, t_general *mother);
 
 void    create_sprites(t_general *mother);
 void    sprite_display(t_general *mother);
-void    sort_sprites(t_general *mother);
+void    sort_sprites(int *tab, int *tab2, int x);
+void    sprite_projection(t_general *mother);
 
 
 #endif

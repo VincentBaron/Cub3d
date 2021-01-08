@@ -6,7 +6,7 @@
 /*   By: vbaron <vbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/26 17:27:55 by vbaron            #+#    #+#             */
-/*   Updated: 2021/01/07 17:34:07 by vbaron           ###   ########.fr       */
+/*   Updated: 2021/01/08 10:45:22 by vbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ void    draw_line(t_general *mother)
         text_index = 2;
     if (mother->dda.side_pos == 0 && mother->gps.ray.x < 0)
         text_index = 3;
-    if (mother->args.matrix[mother->dda.map.y][mother->dda.map.x] == '2')
-        text_index = 4;
     wall_position_calculation(mother);
     texture_calculation(mother, text_index);
     y = mother->dda.line_start;
@@ -122,8 +120,9 @@ void    raycasting(t_general *mother)
         mother->gps.ray.y = mother->gps.dir.y + mother->gps.camera.x * mother->gps.plane.y;
         distance_calculations(mother);
         draw_wall(mother);
-        mother->sprite.zbuffer[mother->mlx.slice] = mother->dda.perpWallDist;
+        //mother->sprite.zbuffer[mother->mlx.slice] = mother->dda.perpWallDist;
+        //sprite_display(mother);
         (mother->mlx.slice)++;
-        sprite_display(mother);
     }
+
 }
