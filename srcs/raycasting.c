@@ -6,7 +6,7 @@
 /*   By: vbaron <vbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/26 17:27:55 by vbaron            #+#    #+#             */
-/*   Updated: 2021/01/08 10:45:22 by vbaron           ###   ########.fr       */
+/*   Updated: 2021/01/08 12:20:46 by vbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,9 +120,8 @@ void    raycasting(t_general *mother)
         mother->gps.ray.y = mother->gps.dir.y + mother->gps.camera.x * mother->gps.plane.y;
         distance_calculations(mother);
         draw_wall(mother);
-        //mother->sprite.zbuffer[mother->mlx.slice] = mother->dda.perpWallDist;
-        //sprite_display(mother);
+        mother->sprite.zbuffer[mother->mlx.slice] = mother->dda.perpWallDist;
         (mother->mlx.slice)++;
     }
-
+    sprite_display(mother);
 }

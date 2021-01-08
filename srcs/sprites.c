@@ -6,7 +6,7 @@
 /*   By: vbaron <vbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 16:37:04 by vbaron            #+#    #+#             */
-/*   Updated: 2021/01/08 10:47:03 by vbaron           ###   ########.fr       */
+/*   Updated: 2021/01/08 12:25:03 by vbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,22 +62,22 @@ void    create_sprites(t_general *mother)
     }
 }
 
-void    sort_sprites(int *tab, int *tab2, int x)
+void    sort_sprites(t_general *mother)
 {
     int i;
 	int temp;
 
 	i = 0;
-	while (i < x)
+	while (i + 1 < mother->sprite.sprite_count)
 	{
-		if (tab[i + 1] > tab[i])
+		if (mother->sprite.sprite_distance[i + 1] > mother->sprite.sprite_distance[i])
 		{
-			temp = tab[i];
-			tab[i] = tab[i + 1];
-			tab[i + 1] = temp;
-            temp = tab2[i];
-			tab2[i] = tab2[i + 1];
-			tab2[i + 1] = temp;
+			temp = mother->sprite.sprite_distance[i];
+			mother->sprite.sprite_distance[i] = mother->sprite.sprite_distance[i + 1];
+			mother->sprite.sprite_distance[i + 1] = temp;
+            temp = mother->sprite.sprite_order[i];
+			mother->sprite.sprite_order[i] = mother->sprite.sprite_order[i + 1];
+			mother->sprite.sprite_order[i + 1] = temp;
 			i = -1;
 		}
 		i++;
@@ -87,7 +87,7 @@ void    sort_sprites(int *tab, int *tab2, int x)
 void    sprite_display(t_general *mother)
 {
     int i;
-
+    
     create_sprites(mother);
     if(!(mother->sprite.sprite_order = (int *)malloc(sizeof(int) * mother->sprite.sprite_count)))
     {
@@ -106,7 +106,8 @@ void    sprite_display(t_general *mother)
         mother->sprite.sprite_distance[i] = ((mother->gps.pos.x - mother->sprite.elem[i].x) * (mother->gps.pos.x - mother->sprite.elem[i].x) + (mother->gps.pos.y - mother->sprite.elem[i].y) * (mother->gps.pos.y - mother->sprite.elem[i].y)); 
         i++;
     }    
-    sort_sprites(mother->sprite.sprite_distance, mother->sprite.sprite_order, mother->sprite.sprite_count);
+    sort_sprites(mother);
+    //exit(0);
     sprite_projection(mother);
 }
 
@@ -120,8 +121,16 @@ void    sprite_projection(t_general *mother)
     int y;
     int d;
 
+     i = 0;
+    while (i < mother->sprite.sprite_count)
+    {
+        printf("elem[%d].x: %d\n", i, mother->sprite.elem[i].x);
+        printf("elem[%d].y: %d\n", i, mother->sprite.elem[i].y);
+        printf("sprite_distance[%d]: %d\n", i, mother->sprite.sprite_distance[i]);
+        printf("sprite_order[%d]: %d\n", i, mother->sprite.sprite_order[i]);
+        i++;
+    }
     i = 0;
-    
     while (i < mother->sprite.sprite_count)
     {
         sprite.x = mother->sprite.elem[mother->sprite.sprite_order[i]].x - mother->gps.pos.x;
@@ -155,11 +164,14 @@ void    sprite_projection(t_general *mother)
                 {
                     d = y * 256 - mother->args.R[1] * 128 + mother->sprite.sprite_height * 128;
                     mother->sprite.tex.y = ((d * mother->args.text[4].text_height) / mother->sprite.sprite_height) / 256;
-                    mother->mlx.img_ray.color = *(unsigned int *)(mother->args.text[4].img_text.addr + mother->args.text[4].img_text.size_line * mother->sprite.tex.y + mother->sprite.tex.x * mother->args.text[4].img_text.bpp / 8);
-                    if ((mother->mlx.img_ray.color & 0x00FFFFFF) != 0) 
-                        draw_pixel(&(mother->mlx.img_ray), slice, y);
+                    //mother->mlx.img_ray.color = *(unsigned int *)(mother->args.text[4].img_text.addr + mother->args.text[4].img_text.size_line * mother->sprite.tex.y + mother->sprite.tex.x * mother->args.text[4].img_text.bpp / 8);
+                    //if ((mother->mlx.img_ray.color & 0x00FFFFFF) != 0) 
+                    //    draw_pixel(&(mother->mlx.img_ray), slice, y);
+                    y++;
                 }
             }
+            slice++;
         }
+        i++;
     }
 }
