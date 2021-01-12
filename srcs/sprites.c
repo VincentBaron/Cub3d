@@ -6,7 +6,7 @@
 /*   By: vincentbaron <vincentbaron@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 16:37:04 by vbaron            #+#    #+#             */
-/*   Updated: 2021/01/12 18:05:29 by vincentbaro      ###   ########.fr       */
+/*   Updated: 2021/01/12 18:25:36 by vincentbaro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,7 +166,7 @@ void    sprite_projection(t_general *mother)
                     ++j;
                 }
             }
-            stripe++; 
+            stripe++;
         }
         i++;
     }

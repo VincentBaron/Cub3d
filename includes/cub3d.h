@@ -6,7 +6,7 @@
 /*   By: vincentbaron <vincentbaron@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/18 14:03:48 by vbaron            #+#    #+#             */
-/*   Updated: 2021/01/12 17:53:55 by vincentbaro      ###   ########.fr       */
+/*   Updated: 2021/01/12 20:11:38 by vincentbaro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -262,10 +262,11 @@ void    create_texture(t_input *args, t_general *mother);
 
 //sprites.c
 
+//static void    sprite_display(t_general *mother, int j, int stripe);
 void    create_sprites(t_general *mother);
 void    sort_sprites(t_general *mother);
 void    sprite_projection(t_general *mother);
 void    drawing_constrains(t_general *mother);
-static void    sprite_display(t_general *mother, int j, int stripe);
+
 
 #endif
