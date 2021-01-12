@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vbaron <vbaron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: vincentbaron <vincentbaron@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/26 17:27:55 by vbaron            #+#    #+#             */
-/*   Updated: 2021/01/08 12:20:46 by vbaron           ###   ########.fr       */
+/*   Updated: 2021/01/12 17:49:16 by vincentbaro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,5 +123,6 @@ void    raycasting(t_general *mother)
         mother->sprite.zbuffer[mother->mlx.slice] = mother->dda.perpWallDist;
         (mother->mlx.slice)++;
     }
-    sprite_display(mother);
+    sort_sprites(mother);
+    sprite_projection(mother);
 }
