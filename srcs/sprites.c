@@ -6,7 +6,7 @@
 /*   By: vbaron <vbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 16:37:04 by vbaron            #+#    #+#             */
-/*   Updated: 2021/01/15 16:49:43 by vbaron           ###   ########.fr       */
+/*   Updated: 2021/01/15 17:48:05 by vbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,23 +59,45 @@ void    create_sprites(t_general *mother)
         mother->error = 3;
         error(mother);
     }
-}
-
-void    sort_sprites(t_general *mother)
-{
-    int i;
-	int temp;
-
     if(!(mother->sprite.sprite_order = (int *)malloc(sizeof(int) * mother->sprite.sprite_count)))
     {
         mother->error = 3;
         error(mother);
     }
-     if(!(mother->sprite.sprite_distance = (int *)malloc(sizeof(int) * mother->sprite.sprite_count)))
+    if(!(mother->sprite.sprite_distance = (int *)malloc(sizeof(int) * mother->sprite.sprite_count)))
     {
         mother->error = 3;
         error(mother);
     }
+}
+
+void    sort_sprites(t_general *mother)
+{
+    int i;
+    int dist_inf;
+    int dist_sup;
+    t_coor temp;
+
+    i = 0;
+    while (i + 1 < mother->sprite.sprite_count)
+    {
+        dist_inf = ((mother->gps.pos.x - mother->sprite.elem[i].x) * (mother->gps.pos.x - mother->sprite.elem[i].x) + (mother->gps.pos.y - mother->sprite.elem[i].y) * (mother->gps.pos.y - mother->sprite.elem[i].y));
+        dist_sup = ((mother->gps.pos.x - mother->sprite.elem[i + 1].x) * (mother->gps.pos.x - mother->sprite.elem[i + 1].x) + (mother->gps.pos.y - mother->sprite.elem[i + 1].y) * (mother->gps.pos.y - mother->sprite.elem[i + 1].y));
+        if (dist_inf < dist_sup)
+        {
+            temp = mother->sprite.elem[i];
+            mother->sprite.elem[i] = mother->sprite.elem[i + 1];
+            mother->sprite.elem[i + 1] = temp;
+            i = 0;
+        }
+        else
+            i++;
+    }
+    
+    
+    /*int i;
+	int temp;
+
     i = 0;
     while (i < mother->sprite.sprite_count)
     {
@@ -98,7 +120,7 @@ void    sort_sprites(t_general *mother)
 			i = -1;
 		}
 		i++;
-	}
+	}*/
 }
 
 void    sprite_distance(t_general *mother, int i)
@@ -148,6 +170,16 @@ void    sprite_projection(t_general *mother)
     int j;
     int stripe;
 
+    i = 0;
+    while (i < mother->sprite.sprite_count)
+    {
+        printf("elem[%d].x: %d\n", i, mother->sprite.elem[i].x);
+        printf("elem[%d].y: %d\n", i, mother->sprite.elem[i].y);
+        printf("sprite_distance[%d]: %d\n", i, mother->sprite.sprite_distance[i]);
+        printf("sprite_order[%d]: %d\n", i, mother->sprite.sprite_order[i]);
+        i++;
+    }
+    
     i = 0;
     while (i < mother->sprite.sprite_count)
     {
