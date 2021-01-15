@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vincentbaron <vincentbaron@student.42.f    +#+  +:+       +#+        */
+/*   By: vbaron <vbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/18 14:03:48 by vbaron            #+#    #+#             */
-/*   Updated: 2021/01/12 20:11:38 by vincentbaro      ###   ########.fr       */
+/*   Updated: 2021/01/15 16:48:51 by vbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,6 +143,8 @@ typedef struct s_map
     int res_y;
     double wall_pos;
     int text_pos;
+    int width;
+    int height;
 } t_map;
 
 typedef struct s_dda
@@ -186,11 +188,12 @@ typedef struct s5_list
     t_map map;
     t_dda dda;
     t_sprite sprite;
+    int error;
 }   t_general;
 
 //program_main.c
 
-void    error(void);
+void    error(t_general *mother);
 int     main(int argc, char **argv);
 
 //initialisation.c

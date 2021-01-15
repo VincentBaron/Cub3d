@@ -6,7 +6,7 @@
 /*   By: vbaron <vbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/23 19:02:56 by vbaron            #+#    #+#             */
-/*   Updated: 2021/01/08 12:06:43 by vbaron           ###   ########.fr       */
+/*   Updated: 2021/01/15 17:20:15 by vbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,73 @@ int    check_args(t_input *args)
 
 }
 
+int    check_spaces(t_general *mother, int i, int f)
+{
+    if ( i - 1 < 0 || f - 1 < 0 || (f + 1 == (int)ft_strlen(mother->args.matrix[i])))
+        return (-1);
+
+    if (check_charset(mother->args.matrix[i - 1][f], "012NSEW") == -1 || check_charset(mother->args.matrix[i + 1][f], "012NSEW") == -1 || check_charset(mother->args.matrix[i][f - 1], "012NSEW") == -1 || check_charset(mother->args.matrix[i][f + 1], "012NSEW") == -1)
+        return(-1);
+    return (0);
+}
+
+void     calculate_map_size(t_general *mother)
+{
+    int i;
+    int f;
+    int player_number;
+
+
+    mother->map.width = 0;
+    mother->map.height = 0;
+    player_number = 0;
+
+    i = 0;
+    while (mother->args.matrix[i])
+    {
+        f = 0;
+        while (mother->args.matrix[i][f])
+        {
+            if (check_charset(mother->args.matrix[i][f], "NSEW") != -1)
+                player_number++;
+            f++;
+        }
+        if (f > mother->map.width)
+            mother->map.width = f;
+        i++;
+    }
+    if (player_number != 1)
+    {
+        mother->error = 4;
+        error(mother);
+    }
+}
+
+void    check_map(t_general *mother)
+{
+    int i;
+    int f;
+
+
+    calculate_map_size(mother);
+    i = 0;
+    while (mother->args.matrix[i])
+    {
+        f = 0;
+        while (mother->args.matrix[i][f])
+        {
+            if (mother->args.matrix[i][f] == '0')
+                if (check_spaces(mother, i, f))
+                {
+                    mother->error = 1;
+                    error(mother);
+                }
+            f++;
+        }
+        i++;
+    }
+}
+
 int    map_parsing(t_input *args, t_general *mother)
 {
     int res;
@@ -106,6 +173,7 @@ int    map_parsing(t_input *args, t_general *mother)
     }
     create_map(args);
     args->matrix = ft_split(args->map, "x");
+    check_map(mother);
     create_sprites(mother);
     ft_free(args->map);
     return (1);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sprites.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vincentbaron <vincentbaron@student.42.f    +#+  +:+       +#+        */
+/*   By: vbaron <vbaron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 16:37:04 by vbaron            #+#    #+#             */
-/*   Updated: 2021/01/12 20:56:09 by vincentbaro      ###   ########.fr       */
+/*   Updated: 2021/01/15 16:49:43 by vbaron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ void    create_sprites(t_general *mother)
     }
     if (!(mother->sprite.elem = (t_coor *)malloc(sizeof(t_coor) * (mother->sprite.sprite_count + 1))))
     {
-        error();
-        return ;
+        mother->error = 3;
+        error(mother);
     }
     i = 0;
     z = 0;
@@ -56,8 +56,8 @@ void    create_sprites(t_general *mother)
     mother->sprite.elem[z].x = -1;
     if(!(mother->sprite.zbuffer = (int *)malloc(sizeof(int) * mother->args.R[0])))
     {
-        error();
-        return ;
+        mother->error = 3;
+        error(mother);
     }
 }
 
@@ -68,13 +68,13 @@ void    sort_sprites(t_general *mother)
 
     if(!(mother->sprite.sprite_order = (int *)malloc(sizeof(int) * mother->sprite.sprite_count)))
     {
-        error();
-        return ;
+        mother->error = 3;
+        error(mother);
     }
      if(!(mother->sprite.sprite_distance = (int *)malloc(sizeof(int) * mother->sprite.sprite_count)))
     {
-        error();
-        return ;
+        mother->error = 3;
+        error(mother);
     }
     i = 0;
     while (i < mother->sprite.sprite_count)
@@ -139,7 +139,7 @@ static void    sprite_display(t_general *mother, int j, int stripe)
     txtr_y = ((d * mother->args.text[4].text_height) / mother->sprite.sprite_height) / 256;
     mother->mlx.img_ray.color = *(unsigned int *)(mother->args.text[4].img_text.addr + mother->args.text[4].img_text.size_line * txtr_y + mother->sprite.tex.x * (mother->args.text[4].img_text.bpp / 8)); //RAJOUT DE PARENTHESE
     if ((mother->mlx.img_ray.color & 0x00FFFFFF) != 0)
-        draw_pixel(&(mother->mlx.img_ray), stripe, j); // CHANGEMENT text_y en j
+        draw_pixel(&(mother->mlx.img_ray), stripe, j);
 }
 
 void    sprite_projection(t_general *mother)
