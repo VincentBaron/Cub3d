@@ -6,7 +6,7 @@
 /*   By: vincentbaron <vincentbaron@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 19:24:18 by vincentbaro       #+#    #+#             */
-/*   Updated: 2021/01/18 22:32:30 by vincentbaro      ###   ########.fr       */
+/*   Updated: 2021/01/18 22:41:00 by vincentbaro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void    fill_file(t_general *mother)
         pixel.x = 0;
         while (pixel.x < mother->args.R[0])
         {
-            *data = mother->mlx.img_ray.addr[pixel.x * mother->mlx.img_ray.bpp + pixel.y * mother->mlx.img_ray.size_line / 8];
+            *data = *((mother->mlx.img_ray.addr +  pixel.x * (mother->mlx.img_ray.bpp / 8) + pixel.y * mother->mlx.img_ray.size_line));
             if (write(mother->bmp.fd, data, 4) < 0)
                 error(mother, 5);
             pixel.x++;
