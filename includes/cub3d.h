@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vbaron <vbaron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: vincentbaron <vincentbaron@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/18 14:03:48 by vbaron            #+#    #+#             */
-/*   Updated: 2021/01/15 16:48:51 by vbaron           ###   ########.fr       */
+/*   Updated: 2021/01/18 21:58:17 by vincentbaro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,6 +180,14 @@ typedef struct s_prite
     int inv_det;
 } t_sprite;
 
+typedef struct bmp
+{
+    int flag;
+    unsigned char header[54];
+    int fd;
+    int file_size;
+} t_bmp;
+
 typedef struct s5_list
 {
     t_input args;
@@ -187,13 +195,14 @@ typedef struct s5_list
     t_gps   gps;
     t_map map;
     t_dda dda;
+    t_bmp bmp;
     t_sprite sprite;
     int error;
 }   t_general;
 
 //program_main.c
 
-void    error(t_general *mother);
+void    error(t_general *mother, int e);
 int     main(int argc, char **argv);
 
 //initialisation.c
@@ -270,6 +279,13 @@ void    create_sprites(t_general *mother);
 void    sort_sprites(t_general *mother);
 void    sprite_projection(t_general *mother);
 void    drawing_constrains(t_general *mother);
+
+
+//bmp.c
+
+void    fill_file(t_general *mother);
+void save_image(t_general *mother);
+void    create_header(t_general  *mother);
 
 
 #endif

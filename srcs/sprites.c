@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sprites.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vbaron <vbaron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: vincentbaron <vincentbaron@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 16:37:04 by vbaron            #+#    #+#             */
-/*   Updated: 2021/01/15 17:48:05 by vbaron           ###   ########.fr       */
+/*   Updated: 2021/01/18 19:42:09 by vincentbaro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,7 @@ void    create_sprites(t_general *mother)
         i++;
     }
     if (!(mother->sprite.elem = (t_coor *)malloc(sizeof(t_coor) * (mother->sprite.sprite_count + 1))))
-    {
-        mother->error = 3;
-        error(mother);
-    }
+        error(mother, 3);
     i = 0;
     z = 0;
     while (mother->args.matrix[i])
@@ -55,20 +52,11 @@ void    create_sprites(t_general *mother)
     }
     mother->sprite.elem[z].x = -1;
     if(!(mother->sprite.zbuffer = (int *)malloc(sizeof(int) * mother->args.R[0])))
-    {
-        mother->error = 3;
-        error(mother);
-    }
+        error(mother, 3);
     if(!(mother->sprite.sprite_order = (int *)malloc(sizeof(int) * mother->sprite.sprite_count)))
-    {
-        mother->error = 3;
-        error(mother);
-    }
+        error(mother, 3);
     if(!(mother->sprite.sprite_distance = (int *)malloc(sizeof(int) * mother->sprite.sprite_count)))
-    {
-        mother->error = 3;
-        error(mother);
-    }
+        error(mother, 3);
 }
 
 void    sort_sprites(t_general *mother)
@@ -93,34 +81,6 @@ void    sort_sprites(t_general *mother)
         else
             i++;
     }
-    
-    
-    /*int i;
-	int temp;
-
-    i = 0;
-    while (i < mother->sprite.sprite_count)
-    {
-        mother->sprite.sprite_order[i] = i;
-        mother->sprite.sprite_distance[i] = ((mother->gps.pos.x - mother->sprite.elem[i].x) * (mother->gps.pos.x - mother->sprite.elem[i].x) + (mother->gps.pos.y - mother->sprite.elem[i].y) * (mother->gps.pos.y - mother->sprite.elem[i].y));
-        i++;
-    }
-
-    i = 0;
-	while (i + 1 < mother->sprite.sprite_count)
-	{
-		if (mother->sprite.sprite_distance[i + 1] > mother->sprite.sprite_distance[i])
-		{
-			temp = mother->sprite.sprite_distance[i];
-			mother->sprite.sprite_distance[i] = mother->sprite.sprite_distance[i + 1];
-			mother->sprite.sprite_distance[i + 1] = temp;
-            temp = mother->sprite.sprite_order[i];
-			mother->sprite.sprite_order[i] = mother->sprite.sprite_order[i + 1];
-			mother->sprite.sprite_order[i + 1] = temp;
-			i = -1;
-		}
-		i++;
-	}*/
 }
 
 void    sprite_distance(t_general *mother, int i)

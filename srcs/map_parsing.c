@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_parsing.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vbaron <vbaron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: vincentbaron <vincentbaron@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/23 19:02:56 by vbaron            #+#    #+#             */
-/*   Updated: 2021/01/15 17:20:15 by vbaron           ###   ########.fr       */
+/*   Updated: 2021/01/18 19:43:14 by vincentbaro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,10 +120,7 @@ void     calculate_map_size(t_general *mother)
         i++;
     }
     if (player_number != 1)
-    {
-        mother->error = 4;
-        error(mother);
-    }
+        error(mother, 4);
 }
 
 void    check_map(t_general *mother)
@@ -141,10 +138,7 @@ void    check_map(t_general *mother)
         {
             if (mother->args.matrix[i][f] == '0')
                 if (check_spaces(mother, i, f))
-                {
-                    mother->error = 1;
-                    error(mother);
-                }
+                    error(mother, 1);
             f++;
         }
         i++;

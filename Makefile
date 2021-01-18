@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vbaron <vbaron@student.42.fr>              +#+  +:+       +#+         #
+#    By: vincentbaron <vincentbaron@student.42.f    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/24 17:36:15 by vbaron            #+#    #+#              #
-#    Updated: 2021/01/07 15:31:51 by vbaron           ###   ########.fr        #
+#    Updated: 2021/01/18 22:21:30 by vincentbaro      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ SOURCES = general_functions_1.c \
 		initialisation.c \
 		texture.c \
 		sprites.c \
+		bmp.c \
 
 SRCS = $(addprefix $(DIR_S)/,$(SOURCES))
 OBJS = $(addprefix $(DIR_O)/,$(SOURCES:.c=.o))

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_functions.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vbaron <vbaron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: vincentbaron <vincentbaron@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/24 16:49:29 by vbaron            #+#    #+#             */
-/*   Updated: 2021/01/08 10:39:59 by vbaron           ###   ########.fr       */
+/*   Updated: 2021/01/18 21:58:33 by vincentbaro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,5 +116,7 @@ void    game_start(t_general *mother)
      mlx_hook(mother->mlx.win, KEY_PRESS, 1L<<0, &key_press, mother);
      mlx_hook(mother->mlx.win, KEY_RELEASE, 1L<<1, &key_release, mother);
      mlx_loop_hook(mother->mlx.ptr, &events_list, mother);
+     if (mother->bmp.flag == 1)
+        return ;
      mlx_loop(mother->mlx.ptr);
 }
