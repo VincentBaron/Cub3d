@@ -6,7 +6,7 @@
 /*   By: vincentbaron <vincentbaron@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 16:37:04 by vbaron            #+#    #+#             */
-/*   Updated: 2021/01/18 19:42:09 by vincentbaro      ###   ########.fr       */
+/*   Updated: 2021/01/19 15:08:32 by vincentbaro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,16 +129,6 @@ void    sprite_projection(t_general *mother)
     int i;
     int j;
     int stripe;
-
-    i = 0;
-    while (i < mother->sprite.sprite_count)
-    {
-        printf("elem[%d].x: %d\n", i, mother->sprite.elem[i].x);
-        printf("elem[%d].y: %d\n", i, mother->sprite.elem[i].y);
-        printf("sprite_distance[%d]: %d\n", i, mother->sprite.sprite_distance[i]);
-        printf("sprite_order[%d]: %d\n", i, mother->sprite.sprite_order[i]);
-        i++;
-    }
     
     i = 0;
     while (i < mother->sprite.sprite_count)

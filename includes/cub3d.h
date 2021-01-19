@@ -6,7 +6,7 @@
 /*   By: vincentbaron <vincentbaron@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/18 14:03:48 by vbaron            #+#    #+#             */
-/*   Updated: 2021/01/18 22:38:07 by vincentbaro      ###   ########.fr       */
+/*   Updated: 2021/01/19 14:46:32 by vincentbaro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,7 +183,8 @@ typedef struct s_prite
 typedef struct bmp
 {
     int flag;
-    unsigned char header[54];
+    unsigned char file[14];
+    unsigned char info[40];
     int fd;
     int file_size;
 } t_bmp;
@@ -235,6 +236,9 @@ int key_release(int keycode, t_general *mother);
 int key_press(int keycode, t_general *mother);
 char *draw_pixel(t_img *img, int x, int y);
 void movement_to_zero(t_general *mother);
+void create_images(t_general *mother);
+void display_images(t_general *mother);
+
 
 //map_functions.c
 
@@ -286,6 +290,8 @@ void    drawing_constrains(t_general *mother);
 void    fill_file(t_general *mother);
 void save_image(t_general *mother);
 void    create_header(t_general  *mother);
+void    create_file(t_general *mother);
+
 
 
 #endif

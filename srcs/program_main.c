@@ -6,7 +6,7 @@
 /*   By: vincentbaron <vincentbaron@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/19 12:38:34 by vbaron            #+#    #+#             */
-/*   Updated: 2021/01/18 22:28:38 by vincentbaro      ###   ########.fr       */
+/*   Updated: 2021/01/19 15:20:20 by vincentbaro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,9 @@ int main(int argc, char **argv)
     map_parsing(&(mother.args), &mother);
     init_map(&mother);
     position_info(&mother);
-    game_start(&mother);
     if (mother.bmp.flag == 1)
         save_image(&mother);
+    else
+        game_start(&mother);
     return (0);
 }

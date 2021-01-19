@@ -6,7 +6,7 @@
 /*   By: vincentbaron <vincentbaron@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 19:24:18 by vincentbaro       #+#    #+#             */
-/*   Updated: 2021/01/18 22:41:00 by vincentbaro      ###   ########.fr       */
+/*   Updated: 2021/01/19 15:08:15 by vincentbaro      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,56 +14,81 @@
 
 void save_image(t_general *mother)
 {
-   mother->bmp.fd = open("image.bmp", O_WRONLY | O_CREAT | O_TRUNC | O_APPEND, 0755);
-   create_header(mother);
-   fill_file(mother);
+    create_images(mother);
+    set_background(mother);
+    raycasting(mother);   
+    mother->bmp.fd = open("bitmap.bmp", O_WRONLY | O_CREAT | O_TRUNC | O_APPEND, 0755);
+    create_file(mother); 
+    create_header(mother);
+    fill_file(mother);
+    //close(mother->bmp.fd);
+    //free(mother->mlx.img_ray.image);
+    //free(mother->mlx.img_ray.addr);
 }
 
 void    fill_file(t_general *mother)
 {
-    unsigned char data[4];
-    t_coor pixel;
+    int i;
+    int j;
+    unsigned char buf[4];
 
-    pixel.y = 0;
-    while (pixel.y < mother->args.R[1])
+    i = mother->args.R[0] * (mother->args.R[1] - 1);
+    while (i >= 0)
     {
-        pixel.x = 0;
-        while (pixel.x < mother->args.R[0])
+        j = 0;
+        while (j < mother->args.R[0])
         {
-            *data = *((mother->mlx.img_ray.addr +  pixel.x * (mother->mlx.img_ray.bpp / 8) + pixel.y * mother->mlx.img_ray.size_line));
-            if (write(mother->bmp.fd, data, 4) < 0)
-                error(mother, 5);
-            pixel.x++;
+            buf[0] = (unsigned char)(mother->mlx.img_ray.addr[i] % 256);
+            buf[1] = (unsigned char)(mother->mlx.img_ray.addr[i] / 256 % 256);
+            buf[2] = (unsigned char)(mother->mlx.img_ray.addr[i] / 256 / 256 % 256);
+            buf[3] = (unsigned char)0;
+            write(mother->bmp.fd, buf, 4);
+            i++;
+            j++;
         }
-        pixel.y++;
+        i -= 2 * mother->args.R[0];
     }
+}
+
+void    create_file(t_general *mother)
+{
+    int n;
+    unsigned char header[14];
+    int file_size;
+
+    file_size = mother->args.R[0] * mother->args.R[1] * 4 + 54;
+    n = 0;
+    while (n < 14)
+        header[n++] = (unsigned char)0;
+    header[0] = (unsigned char)66;
+    header[1] = (unsigned char)77;
+    header[2] = (unsigned char)(file_size % 256);
+	header[3] = (unsigned char)(file_size / 256 % 256);
+	header[4] = (unsigned char)(file_size / 256 / 256 % 256);
+	header[5] = (unsigned char)(file_size / 256 / 256 / 256);
+	header[10] = (unsigned char)(54);
+	write(mother->bmp.fd, header, 14);
 }
 
 void    create_header(t_general  *mother)
 {
     int i;
-    
+    unsigned char header[40];
+
     i = 0;
-    mother->bmp.file_size = 54 + 3 * mother->args.R[0] * mother->args.R[1];
-    ft_memset(mother->bmp.header, 0, 54);
-    mother->bmp.header[0] = 'B';
-    mother->bmp.header[1] = 'M';
-    mother->bmp.header[2] = (unsigned char)mother->bmp.file_size;
-    mother->bmp.header[3] = (unsigned char)mother->bmp.file_size >> 8;
-    mother->bmp.header[4] = (unsigned char)mother->bmp.file_size >> 16;
-    mother->bmp.header[5] = (unsigned char)mother->bmp.file_size >> 24;
-    mother->bmp.header[10] = (unsigned char)54;
-    mother->bmp.header[14] = (unsigned char)40;
-    mother->bmp.header[18] = (unsigned char)mother->args.R[0];
-    mother->bmp.header[19] = (unsigned char)mother->args.R[0] >> 8;
-    mother->bmp.header[20] = (unsigned char)mother->args.R[0] >> 16;
-    mother->bmp.header[21] = (unsigned char)mother->args.R[0] >> 24;
-    mother->bmp.header[22] = (unsigned char)mother->args.R[1];
-    mother->bmp.header[23] = (unsigned char)mother->args.R[1] >> 8;
-    mother->bmp.header[24] = (unsigned char)mother->args.R[1] >> 16;
-    mother->bmp.header[25] = (unsigned char)mother->args.R[1] >> 24;
-    mother->bmp.header[26] = (unsigned char)1;
-    mother->bmp.header[28] = (unsigned char)32;
-    if (write(mother->bmp.fd, mother->bmp.header, 54) < 0)
-        error(mother, 5);
+    while (i < 40)
+        header[i++] = (unsigned char)0;
+    header[0] = (unsigned char)40;
+    header[4] = (unsigned char)(mother->args.R[0] % 256);
+	header[5] = (unsigned char)(mother->args.R[0] / 256 % 256);
+	header[6] = (unsigned char)(mother->args.R[0] / 256 / 256 % 256);
+	header[7] = (unsigned char)(mother->args.R[0] / 256 / 256 / 256);
+	header[8] = (unsigned char)(mother->args.R[1] % 256);
+	header[9] = (unsigned char)(mother->args.R[1] / 256 % 256);
+	header[10] = (unsigned char)(mother->args.R[1] / 256 / 256 % 256);
+	header[11] = (unsigned char)(mother->args.R[1] / 256 / 256 / 256);
+	header[12] = (unsigned char)(1);
+	header[14] = (unsigned char)(32);
+	write(mother->bmp.fd, header, 40);
+
 }
