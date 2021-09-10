@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/23 19:02:56 by vbaron            #+#    #+#             */
-/*   Updated: 2021/09/10 20:22:30 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/10 20:30:38 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,13 @@ void     args_definer(t_input *args, t_general *mother)
             create_texture(args, mother);
         if (args->index_i == 7 || args->index_i == 8 || args->index_i == 1)
             splitter_alloc(args);
-        if (!(mother->mlx.ptr = mlx_init()))
-          ft_putstr_fd("Error initialising mlx", 2);
-        if (!(mother->mlx.win = mlx_new_window(mother->mlx.ptr, mother->args.R[0], mother->args.R[1], "J' aime les Moules Brite")))
-          ft_putstr_fd("Error creating window", 2);
+        if (mother->mlx.is_created == 0)
+        {
+            if (!(mother->mlx.win = mlx_new_window(mother->mlx.ptr, mother->args.R[0], mother->args.R[1], "J' aime les Moules Brite")))
+                ft_putstr_fd("Error creating window", 2);
+            mother->mlx.is_created = 1;
+        }
+       
 }
 
 int    check_args(t_input *args)
@@ -149,6 +152,8 @@ int    map_parsing(t_input *args, t_general *mother)
 {
     int res;
     
+    if (!(mother->mlx.ptr = mlx_init()))
+          ft_putstr_fd("Error initialising mlx", 2);
     (args->map) = ft_strdup("");
    initialise_args(args);
     while ((res = get_next_line(args->fd, &(args->line))) != 0)

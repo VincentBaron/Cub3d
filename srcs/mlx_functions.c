@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/24 16:49:29 by vbaron            #+#    #+#             */
-/*   Updated: 2021/09/10 20:02:27 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/10 20:26:35 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ char *draw_pixel(t_img *img, int x, int y)
 void ft_clean(t_general *mother)
 {
      (void)mother;
-     mlx_destroy_image(mother->mlx.ptr, mother->mlx.img_ray.image);
-     mlx_destroy_image(mother->mlx.ptr, mother->mlx.img_sprite.image);
-     mlx_destroy_window(mother->mlx.ptr, mother->mlx.win);
-     free(mother->mlx.img_ray.addr);
+     // mlx_destroy_image(mother->mlx.ptr, mother->mlx.img_ray.image);
+     // mlx_destroy_image(mother->mlx.ptr, mother->mlx.img_sprite.image);
+     // mlx_destroy_window(mother->mlx.ptr, mother->mlx.win);
+     // free(mother->mlx.img_ray.addr);
      exit(1);
 }
 
