@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vincentbaron <vincentbaron@student.42.f    +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/18 14:03:48 by vbaron            #+#    #+#             */
-/*   Updated: 2021/01/19 14:46:32 by vincentbaro      ###   ########.fr       */
+/*   Updated: 2021/09/10 19:59:02 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,33 +24,33 @@
 # include <string.h>
 
 //LINUX
-/*
+
 # define KEY_PRESS 2
 # define KEY_RELEASE 3
-# define RIGHT_ARROW 65363
-# define LEFT_ARROW 65361
-# define UP_ARROW 65362
-# define DOWN_ARROW 65364
+# define ROT_RIGHT 65363
+# define ROT_LEFT 65361
 # define UP 119
 # define LEFT 97
 # define DOWN 115
 # define RIGHT 100
 # define ESC 65307
-*/
+# define MOVE_SPEED 0.1
+# define ROT_SPEED 0.05
+
 
 //MACOS
 
-# define KEY_PRESS 2
-# define KEY_RELEASE 3
-# define ESC 53
-# define UP 13
-# define LEFT 0
-# define DOWN 1
-# define RIGHT 2
-# define ROT_RIGHT 124
-# define ROT_LEFT 123
-# define MOVE_SPEED 0.1
-# define ROT_SPEED 0.05
+// # define KEY_PRESS 2
+// # define KEY_RELEASE 3
+// # define ESC 53
+// # define UP 13
+// # define LEFT 0
+// # define DOWN 1
+// # define RIGHT 2
+// # define ROT_RIGHT 124
+// # define ROT_LEFT 123
+// # define MOVE_SPEED 0.1
+// # define ROT_SPEED 0.05
 
 //MATHS
 
@@ -131,6 +131,7 @@ typedef struct s12_list
     int esc;
     int text_width;
     int text_height;
+    int is_created;
 } t_mlx;
 
 typedef struct s_map
@@ -180,15 +181,6 @@ typedef struct s_prite
     int inv_det;
 } t_sprite;
 
-typedef struct bmp
-{
-    int flag;
-    unsigned char file[14];
-    unsigned char info[40];
-    int fd;
-    int file_size;
-} t_bmp;
-
 typedef struct s5_list
 {
     t_input args;
@@ -196,7 +188,6 @@ typedef struct s5_list
     t_gps   gps;
     t_map map;
     t_dda dda;
-    t_bmp bmp;
     t_sprite sprite;
     int error;
 }   t_general;

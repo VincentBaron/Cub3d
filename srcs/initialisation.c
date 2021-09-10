@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialisation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vbaron <vbaron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 10:34:46 by vincentbaro       #+#    #+#             */
-/*   Updated: 2021/01/05 17:15:54 by vbaron           ###   ########.fr       */
+/*   Updated: 2021/09/10 20:21:38 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,20 @@ void    init_vars(t_general *mother)
     mother->gps.ray.y = 0;
     mother->mlx.img_ray.color = 0;
     mother->mlx.esc = 0;
+    mother->mlx.img_map.image = NULL;
+    mother->mlx.img_ray.image = NULL;
+    mother->mlx.img_sprite.image = NULL;
+    mother->mlx.img_map.addr = NULL;
+    mother->mlx.img_ray.addr = NULL;
+    mother->mlx.img_sprite.addr = NULL;
+    mother->args.line = NULL;
+    mother->args.map = NULL;
+    mother->args.matrix = NULL;
+    mother->mlx.ptr = NULL;
+    mother->mlx.win = NULL;
+    mother->mlx.is_created = 0;
+
+
     //mother->texture.flag = 0;
 }
 

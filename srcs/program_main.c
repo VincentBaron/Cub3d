@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   program_main.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vincentbaron <vincentbaron@student.42.f    +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/19 12:38:34 by vbaron            #+#    #+#             */
-/*   Updated: 2021/01/19 15:20:20 by vincentbaro      ###   ########.fr       */
+/*   Updated: 2021/09/10 20:18:14 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,20 +51,14 @@ int main(int argc, char **argv)
 {
     t_general mother;
 
-    mother.bmp.flag = 0;
-    if (argc < 2 || argc > 3)
+    if (argc != 2)
         error(&mother, 2);
-    if (ft_strncmp(argv[1], "--save", 6) == 0)
-        mother.bmp.flag = 1;
-    if ((mother.args.fd = open(argv[mother.bmp.flag + 1], O_RDONLY)) == -1)
+    if ((mother.args.fd = open(argv[1], O_RDONLY)) == -1)
         error(&mother, 2);
     init_vars(&mother);
     map_parsing(&(mother.args), &mother);
     init_map(&mother);
     position_info(&mother);
-    if (mother.bmp.flag == 1)
-        save_image(&mother);
-    else
-        game_start(&mother);
+    game_start(&mother);
     return (0);
 }

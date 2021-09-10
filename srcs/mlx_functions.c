@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_functions.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vincentbaron <vincentbaron@student.42.f    +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/24 16:49:29 by vbaron            #+#    #+#             */
-/*   Updated: 2021/01/19 14:49:04 by vincentbaro      ###   ########.fr       */
+/*   Updated: 2021/09/10 20:02:27 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,16 @@ char *draw_pixel(t_img *img, int x, int y)
      dest = (img->addr +  x * (img->bpp / 8) + y * img->size_line);
      *(unsigned int *)dest = img->color;
      return (dest);
+}
+
+void ft_clean(t_general *mother)
+{
+     (void)mother;
+     mlx_destroy_image(mother->mlx.ptr, mother->mlx.img_ray.image);
+     mlx_destroy_image(mother->mlx.ptr, mother->mlx.img_sprite.image);
+     mlx_destroy_window(mother->mlx.ptr, mother->mlx.win);
+     free(mother->mlx.img_ray.addr);
+     exit(1);
 }
 
 int key_press(int keycode, t_general *mother)
@@ -38,10 +48,7 @@ int key_press(int keycode, t_general *mother)
      else if (keycode == ROT_RIGHT)
           mother->gps.rot_right = 1;
      else if (keycode == ESC)
-     {
-          mlx_destroy_window(mother->mlx.ptr, mother->mlx.win);
-          exit(1);
-     }
+          ft_clean(mother);
      printf("keycode: %d\n", keycode);
      return (0);
 }
@@ -108,8 +115,6 @@ int events_list(t_general *mother)
 
 void    game_start(t_general *mother)
 {    
-     int i;
-    i = 0;
      create_images(mother);
      mlx_hook(mother->mlx.win, KEY_PRESS, 1L<<0, &key_press, mother);
      mlx_hook(mother->mlx.win, KEY_RELEASE, 1L<<1, &key_release, mother);

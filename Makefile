@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vincentbaron <vincentbaron@student.42.f    +#+  +:+       +#+         #
+#    By: user42 <user42@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/24 17:36:15 by vbaron            #+#    #+#              #
-#    Updated: 2021/01/18 22:21:30 by vincentbaro      ###   ########.fr        #
+#    Updated: 2021/09/10 19:38:24 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,10 +35,10 @@ LIBFT_DIR = Libft
 
 ######################################################
 ##DIR_MacOS
-MLX_DIR = mlx-macos
+# MLX_DIR = mlx-macos
 ######################################################
 ##DIR_Linux
-##MLX_DIR = mlx-linux
+MLX_DIR = mlx-linux
 #######################################################
 
 NAME = Cub3d
@@ -48,18 +48,18 @@ NAME = Cub3d
 #CC = gcc
 ########################################################
 ##Linux
-##CC = clang
+CC = clang
 ########################################################
 
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror -g #-fsanitize=address
 
 ########################################################
 ##MacOS
 #-I /usr/X11/include -g -L /usr/X11/lib -lX11 -lmlx -lXext 
-LIBS = -framework OpenGL -framework Appkit
+# LIBS = -framework OpenGL -framework Appkit
 ########################################################
 ##Linux
-##LIBS = -lXext -lX11 -lm
+LIBS = -lXext -lX11 -lm
 ########################################################
 
 MLX = $(addprefix $(MLX_DIR)/,libmlx.a)
