@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/23 19:02:56 by vbaron            #+#    #+#             */
-/*   Updated: 2021/09/13 19:54:51 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/13 21:49:14 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,10 +180,10 @@ int    map_parsing(t_input *args, t_general *mother)
         ft_free(args->line);
     }
     create_map(mother);
-    free(args->line);
     args->matrix = ft_split(args->map, "x");
     check_map(mother);
     create_sprites(mother);
     ft_free(args->map);
+        free(args->line);
     return (1);
 }

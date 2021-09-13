@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/19 12:38:34 by vbaron            #+#    #+#             */
-/*   Updated: 2021/09/13 19:20:48 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/13 21:50:42 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,27 @@ void    free_program(t_general *mother)
 void    error(t_general *mother, int e)
 {
     (void)mother;
-    if (e == 1)
-        ft_putstr_fd("- Error 1: Map is unvalid -", 1);
+    if (e == 1 || e == 4)
+    {
+        if (mother->args.line)
+            free(mother->args.line);
+        if (mother->args.map)
+            free(mother->args.map);
+        if (e == 1)
+            ft_putstr_fd("- Error 1: Map is unvalid -", 1);
+        if (e == 4)
+            ft_putstr_fd("- Error 4: Too many players -", 1);
+    }
     if (e == 2)
         ft_putstr_fd("- Error 2: Arguments invalid -", 1);
     if (e == 3)
         ft_putstr_fd("- Error 3: Malloc Error -", 1);
-    if (e == 4)
-        ft_putstr_fd("- Error 4: Too many players -", 1);
     if (e == 5)
         ft_putstr_fd("- Error 5: Could not create bmp image -", 1);
-    ft_clean(mother);
+
+    if (e != 2)
+        ft_clean(mother);
+    exit(1);
 }
 
 int	check_file(char *file)
