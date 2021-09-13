@@ -6,7 +6,7 @@
 #    By: user42 <user42@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/24 17:36:15 by vbaron            #+#    #+#              #
-#    Updated: 2021/09/13 16:41:07 by user42           ###   ########.fr        #
+#    Updated: 2021/09/13 18:23:20 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,15 +77,20 @@ $(NAME): $(OBJS) $(LIBFT) $(MLX)
 $(LIBFT):
 		 make -C $(LIBFT_DIR)
 
+$(MLX):
+		 make -C $(MLX_DIR)
+
 clean:
 		rm -f $(OBJS)		
 	rm -f $(OBJS)/*.o
 	rm -rf $(DIR_O)	
 	make clean -C $(LIBFT_DIR)
+	make clean -C $(MLX_DIR)
 
 fclean: clean
 	rm -rf $(NAME)
 	make fclean -C $(LIBFT_DIR)
+	make clean -C $(MLX_DIR)
 
 re: fclean all
 
