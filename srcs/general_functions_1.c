@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 17:42:53 by vbaron            #+#    #+#             */
-/*   Updated: 2021/09/13 17:28:04 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/13 17:52:16 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	create_map(t_input *args)
 				free(args->map);
 			args->map = tmp;
 			// free(tmp);
-			// free(dup);
+			free(dup);
 			break;
 		}
 		i++;

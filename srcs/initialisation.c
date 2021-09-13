@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 10:34:46 by vincentbaro       #+#    #+#             */
-/*   Updated: 2021/09/10 20:21:38 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/13 18:10:31 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void    init_map(t_general *mother)
     map_res = mother->args.R[0] * mother->args.R[1] / 4;
 
     i = 0;
+    width = 0;
     while (mother->args.matrix[i])
     {
         f = 0;

@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/24 16:49:29 by vbaron            #+#    #+#             */
-/*   Updated: 2021/09/13 16:53:46 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/13 18:09:29 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,12 @@ void ft_clean(t_general *mother)
 {
      (void)mother;
      if (mother->mlx.img_sprite.image)
+          mlx_destroy_image(mother->mlx.ptr, mother->mlx.img_sprite.image);
+     if (mother->mlx.img_ray.image)
           mlx_destroy_image(mother->mlx.ptr, mother->mlx.img_ray.image);
-     // if (mother->mlx.img_ray.image)
-     //      mlx_destroy_image(mother->mlx.ptr, mother->mlx.img_sprite.image);
      if (mother->mlx.win)
           mlx_destroy_window(mother->mlx.ptr, mother->mlx.win);
-     // free(mother->mlx.ptr);
-     // free(mother->mlx.img_ray.addr);
+     free(mother->mlx.ptr);
      exit(1);
 }
 

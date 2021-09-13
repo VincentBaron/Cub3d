@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vincentbaron <vincentbaron@student.42.f    +#+  +:+       +#+         #
+#    By: user42 <user42@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/04/27 13:17:26 by vbaron            #+#    #+#              #
-#    Updated: 2020/09/28 17:00:24 by vincentbaro      ###   ########.fr        #
+#    Updated: 2021/09/13 17:57:59 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,13 +40,11 @@ SRC			=	ft_atoi.c    			\
 				ft_putnbr_fd.c  		\
 				ft_putstr_fd.c  		\
 				ft_strchr.c				\
-				ft_strdup.c				\
 				ft_strjoin.c 			\
 				ft_strlen.c  			\
 				ft_strmapi.c 			\
 				ft_strncmp.c 			\
 				ft_strrchr.c 			\
-				ft_strtrim.c 			\
 				ft_substr.c  			\
 				ft_tolower.c 			\
 				ft_toupper.c 			\
