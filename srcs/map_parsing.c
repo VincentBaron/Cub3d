@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/23 19:02:56 by vbaron            #+#    #+#             */
-/*   Updated: 2021/09/10 20:30:38 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/13 17:27:56 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,12 @@ void    initialise_args(t_input *args)
 void    splitter_alloc(t_input *args)
 {
     char **splitter;
+    char **head;
     int x;
 
     x = 0;
     splitter = ft_split(&(args->line[args->tracker]), ", ");
+    head = splitter;
     if (args->index_i == 1)
     {
         args->R[0] = ft_atoi(splitter[0]);
@@ -53,6 +55,13 @@ void    splitter_alloc(t_input *args)
             splitter++;
         }
     }
+    x = 0;
+    while (head[x])
+    {
+        free(head[x]);
+        x++;
+    }
+    free(head);
 }
 
 void     args_definer(t_input *args, t_general *mother)
@@ -154,7 +163,7 @@ int    map_parsing(t_input *args, t_general *mother)
     
     if (!(mother->mlx.ptr = mlx_init()))
           ft_putstr_fd("Error initialising mlx", 2);
-    (args->map) = ft_strdup("");
+    (args->map) = ft_substr_bis("", 0, 0);
    initialise_args(args);
     while ((res = get_next_line(args->fd, &(args->line))) != 0)
     {
@@ -171,6 +180,7 @@ int    map_parsing(t_input *args, t_general *mother)
         ft_free(args->line);
     }
     create_map(args);
+    free(args->line);
     args->matrix = ft_split(args->map, "x");
     check_map(mother);
     create_sprites(mother);

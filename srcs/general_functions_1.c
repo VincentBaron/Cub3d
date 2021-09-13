@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   general_functions_1.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vincentbaron <vincentbaron@student.42.f    +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 17:42:53 by vbaron            #+#    #+#             */
-/*   Updated: 2020/10/16 17:20:40 by vincentbaro      ###   ########.fr       */
+/*   Updated: 2021/09/13 17:28:04 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	create_map(t_input *args)
 {
 	char	*dup;
+	char *tmp;
 	int		size;
 	int		i;
 
@@ -35,7 +36,12 @@ void	create_map(t_input *args)
 			dup[i] = 'x';
 			i++;
 			dup[i] = '\0';
-			args->map = ft_strjoin(args->map, dup);
+			tmp = ft_strjoin(args->map, dup);
+			if (args->map)
+				free(args->map);
+			args->map = tmp;
+			// free(tmp);
+			// free(dup);
 			break;
 		}
 		i++;
