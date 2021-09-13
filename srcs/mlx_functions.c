@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/24 16:49:29 by vbaron            #+#    #+#             */
-/*   Updated: 2021/09/13 19:01:47 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/13 19:06:02 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char *draw_pixel(t_img *img, int x, int y)
      return (dest);
 }
 
-void ft_clean(t_general *mother)
+int ft_clean(t_general *mother)
 {
      int	i;
 
@@ -153,6 +153,7 @@ void    game_start(t_general *mother)
 {    
      create_images(mother);
      mlx_hook(mother->mlx.win, KEY_PRESS, 1L<<0, &key_press, mother);
+     mlx_hook(mother->mlx.win, 33, (1L << 17), ft_clean, mother);
      mlx_hook(mother->mlx.win, KEY_RELEASE, 1L<<1, &key_release, mother);
      mlx_loop_hook(mother->mlx.ptr, &events_list, mother);
      mlx_loop(mother->mlx.ptr);
