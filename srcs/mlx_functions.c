@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/24 16:49:29 by vbaron            #+#    #+#             */
-/*   Updated: 2021/09/13 18:09:29 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/13 19:01:47 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,47 @@ char *draw_pixel(t_img *img, int x, int y)
 
 void ft_clean(t_general *mother)
 {
-     (void)mother;
+     int	i;
+
+	i = 0;
+	while (mother->args.matrix[i])
+	{
+		if (mother->args.matrix[i])
+			ft_free(mother->args.matrix[i]);
+		i++;
+	}
+     if (mother->args.matrix)
+          free(mother->args.matrix);
+     i = 0;
+     while (i < 5)
+     {
+          if (mother->args.text[i].img_text.image)
+               mlx_destroy_image(mother->mlx.ptr, mother->args.text[i].img_text.image);
+          if (mother->args.text[i].path)
+               free(mother->args.text[i].path);
+          i++;
+     }
+     if (mother->sprite.elem)
+          free(mother->sprite.elem);
+     if (mother->sprite.zbuffer)
+          free(mother->sprite.zbuffer);
+     if (mother->sprite.zbuffer)
+          free(mother->sprite.sprite_distance);
+     if (mother->sprite.sprite_order)
+          free(mother->sprite.sprite_order);
      if (mother->mlx.img_sprite.image)
           mlx_destroy_image(mother->mlx.ptr, mother->mlx.img_sprite.image);
      if (mother->mlx.img_ray.image)
           mlx_destroy_image(mother->mlx.ptr, mother->mlx.img_ray.image);
+     if (mother->mlx.img_map.image)
+          mlx_destroy_image(mother->mlx.ptr, mother->mlx.img_map.image);
      if (mother->mlx.win)
           mlx_destroy_window(mother->mlx.ptr, mother->mlx.win);
-     free(mother->mlx.ptr);
+     if (mother->mlx.ptr)
+     {
+          mlx_destroy_display(mother->mlx.ptr);
+          free(mother->mlx.ptr);
+     }
      exit(1);
 }
 
