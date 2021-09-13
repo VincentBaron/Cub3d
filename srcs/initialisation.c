@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 10:34:46 by vincentbaro       #+#    #+#             */
-/*   Updated: 2021/09/13 18:10:31 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/13 19:15:13 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,10 @@ void    init_vars(t_general *mother)
     mother->args.matrix = NULL;
     mother->mlx.ptr = NULL;
     mother->mlx.win = NULL;
+    mother->sprite.elem = NULL;
+    mother->sprite.zbuffer = NULL;
+    mother->sprite.sprite_distance = NULL;
+    mother->sprite.sprite_order = NULL;
     mother->mlx.is_created = 0;
 
 

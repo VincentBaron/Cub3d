@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/24 16:49:29 by vbaron            #+#    #+#             */
-/*   Updated: 2021/09/13 19:06:02 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/13 21:15:34 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,16 @@ int ft_clean(t_general *mother)
      int	i;
 
 	i = 0;
-	while (mother->args.matrix[i])
-	{
-		if (mother->args.matrix[i])
-			ft_free(mother->args.matrix[i]);
-		i++;
-	}
      if (mother->args.matrix)
+     {
+          while (mother->args.matrix[i])
+          {
+               if (mother->args.matrix[i])
+                    ft_free(mother->args.matrix[i]);
+               i++;
+          }
           free(mother->args.matrix);
+     }
      i = 0;
      while (i < 5)
      {
@@ -47,7 +49,7 @@ int ft_clean(t_general *mother)
           free(mother->sprite.elem);
      if (mother->sprite.zbuffer)
           free(mother->sprite.zbuffer);
-     if (mother->sprite.zbuffer)
+     if (mother->sprite.sprite_distance)
           free(mother->sprite.sprite_distance);
      if (mother->sprite.sprite_order)
           free(mother->sprite.sprite_order);
@@ -64,6 +66,10 @@ int ft_clean(t_general *mother)
           mlx_destroy_display(mother->mlx.ptr);
           free(mother->mlx.ptr);
      }
+     if (mother->args.line)
+          free(mother->args.line);
+     if (mother->args.map)
+          free(mother->args.map);
      exit(1);
 }
 

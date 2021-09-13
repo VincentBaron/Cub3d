@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/23 19:02:56 by vbaron            #+#    #+#             */
-/*   Updated: 2021/09/13 17:27:56 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/13 19:54:51 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void     args_definer(t_input *args, t_general *mother)
             splitter_alloc(args);
         if (mother->mlx.is_created == 0)
         {
-            if (!(mother->mlx.win = mlx_new_window(mother->mlx.ptr, mother->args.R[0], mother->args.R[1], "J' aime les Moules Brite")))
+            if (!(mother->mlx.win = mlx_new_window(mother->mlx.ptr, mother->args.R[0], mother->args.R[1], "Cub3d")))
                 ft_putstr_fd("Error creating window", 2);
             mother->mlx.is_created = 1;
         }
@@ -174,12 +174,12 @@ int    map_parsing(t_input *args, t_general *mother)
             args->tracker++;
         check_args(args);
         if (args->index_i == 0)
-            create_map(args);
+            create_map(mother);
         else if (args->index_i > 0)
             args_definer(args, mother);
         ft_free(args->line);
     }
-    create_map(args);
+    create_map(mother);
     free(args->line);
     args->matrix = ft_split(args->map, "x");
     check_map(mother);

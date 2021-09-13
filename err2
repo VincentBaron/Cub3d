@@ -1,25 +1,26 @@
-==17599== Memcheck, a memory error detector
-==17599== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==17599== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
-==17599== Command: ./Cub3d map.cub
-==17599== 
-==17599== 
-==17599== HEAP SUMMARY:
-==17599==     in use at exit: 176 bytes in 1 blocks
-==17599==   total heap usage: 907 allocs, 906 frees, 658,357 bytes allocated
-==17599== 
-==17599== 176 bytes in 1 blocks are still reachable in loss record 1 of 1
-==17599==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==17599==    by 0x4065C8: ft_split (in /home/user42/Bureau/Cub3d-vectors/Cub3d)
-==17599==    by 0x402590: map_parsing (map_parsing.c:184)
-==17599==    by 0x40277A: main (program_main.c:59)
-==17599== 
-==17599== LEAK SUMMARY:
-==17599==    definitely lost: 0 bytes in 0 blocks
-==17599==    indirectly lost: 0 bytes in 0 blocks
-==17599==      possibly lost: 0 bytes in 0 blocks
-==17599==    still reachable: 176 bytes in 1 blocks
-==17599==         suppressed: 0 bytes in 0 blocks
-==17599== 
-==17599== For counts of detected and suppressed errors, rerun with: -v
-==17599== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 4 from 1)
+==3438== Memcheck, a memory error detector
+==3438== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==3438== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==3438== Command: ./Cub3d map.cub
+==3438== 
+==3438== 
+==3438== HEAP SUMMARY:
+==3438==     in use at exit: 35 bytes in 1 blocks
+==3438==   total heap usage: 780 allocs, 779 frees, 626,726 bytes allocated
+==3438== 
+==3438== 35 bytes in 1 blocks are still reachable in loss record 1 of 1
+==3438==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==3438==    by 0x4039A6: ft_substr_bis (get_next_line_utils.c:70)
+==3438==    by 0x401BB5: create_map (general_functions_1.c:43)
+==3438==    by 0x4025C9: map_parsing (map_parsing.c:177)
+==3438==    by 0x40291D: main (program_main.c:71)
+==3438== 
+==3438== LEAK SUMMARY:
+==3438==    definitely lost: 0 bytes in 0 blocks
+==3438==    indirectly lost: 0 bytes in 0 blocks
+==3438==      possibly lost: 0 bytes in 0 blocks
+==3438==    still reachable: 35 bytes in 1 blocks
+==3438==         suppressed: 0 bytes in 0 blocks
+==3438== 
+==3438== For counts of detected and suppressed errors, rerun with: -v
+==3438== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 1 from 1)

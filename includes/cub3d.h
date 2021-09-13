@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/18 14:03:48 by vbaron            #+#    #+#             */
-/*   Updated: 2021/09/10 19:59:02 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/13 19:53:51 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -212,7 +212,7 @@ void    initialise_args(t_input *args);
 
 //general_functions_1.c
 
-void	create_map(t_input *args);
+void	create_map(t_general *mother);
 
 //starting_info.c
 
@@ -229,6 +229,7 @@ char *draw_pixel(t_img *img, int x, int y);
 void movement_to_zero(t_general *mother);
 void create_images(t_general *mother);
 void display_images(t_general *mother);
+int ft_clean(t_general *mother);
 
 
 //map_functions.c
