@@ -23,7 +23,7 @@ void    init_vars(t_general *mother)
         mother->args.text[i].path = NULL;
         i++;
     }
-    mother->args.r_filled = 0;
+    mother->args.r_filled = 1;
     mother->args.c_filled = 0;
     mother->args.f_filled = 0;
     mother->gps.pos.x = 0;

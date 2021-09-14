@@ -211,7 +211,7 @@ void    set_background(t_general *mother);
 
 int    map_parsing(t_input *args, t_general *mother);
 void     args_definer(t_input *args, t_general *mother);
-void    splitter_alloc(t_input *args);
+void    splitter_alloc(t_general *mother, t_input *args);
 void    initialise_args(t_input *args);
 
 //general_functions_1.c

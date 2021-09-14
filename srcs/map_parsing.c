@@ -29,7 +29,7 @@ void    initialise_args(t_input *args)
     args->C.RGB[0] = -1;
 }
 
-void    splitter_alloc(t_input *args)
+void    splitter_alloc(t_general *mother, t_input *args)
 {
     char **splitter;
     char **head;
@@ -39,11 +39,7 @@ void    splitter_alloc(t_input *args)
     splitter = ft_split(&(args->line[args->tracker]), ", ");
     head = splitter;
     if (args->index_i == 1)
-    {
-        args->R[0] = ft_atoi(splitter[0]);
-        args->R[1] = ft_atoi(splitter[1]);
-        args->r_filled++;
-    }
+        error(mother, 6);
     else
     {
         while (*splitter && x < 3)
@@ -76,9 +72,11 @@ void     args_definer(t_input *args, t_general *mother)
         if (args->index_i >= 2 && args->index_i <= 6)
             create_texture(args, mother);
         if (args->index_i == 7 || args->index_i == 8 || args->index_i == 1)
-            splitter_alloc(args);
+            splitter_alloc(mother, args);
         if (mother->mlx.is_created == 0)
         {
+            mother->args.R[0] = 800;
+            mother->args.R[1] = 800;
             if (!(mother->mlx.win = mlx_new_window(mother->mlx.ptr, mother->args.R[0], mother->args.R[1], "Cub3d")))
                 ft_putstr_fd("Error creating window", 2);
             mother->mlx.is_created = 1;
