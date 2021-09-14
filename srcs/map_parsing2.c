@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 21:41:59 by user42            #+#    #+#             */
-/*   Updated: 2021/09/14 21:49:28 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/14 23:20:48 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,8 @@ void	splitter_alloc(t_general *mother, t_input *args)
 
 void	args_definer(t_input *args, t_general *mother)
 {
-	if (args->index_i == 6)
-		error(mother, 6);
+	// if (args->index_i == 6)
+	// 	error(mother, 6);
 	while (args->line[args->tracker] && !(args->line[args->tracker] >= '0'
 			&& args->line[args->tracker] <= '9')
 		&& args->line[args->tracker] != '.')
