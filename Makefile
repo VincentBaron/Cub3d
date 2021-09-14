@@ -6,7 +6,7 @@
 #    By: user42 <user42@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/24 17:36:15 by vbaron            #+#    #+#              #
-#    Updated: 2021/09/14 21:48:41 by user42           ###   ########.fr        #
+#    Updated: 2021/09/14 22:24:17 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ SOURCES = general_functions_1.c \
 		program_main.c \
 		starting_info.c \
 		mlx_functions.c \
+		mlx_functions2.c \
 		get_next_line.c \
 		get_next_line_utils.c \
 		map_functions.c \
