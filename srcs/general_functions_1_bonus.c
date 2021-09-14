@@ -23,7 +23,7 @@ void	create_map(t_general *mother)
 	i = 0;
 	while (mother->args.line[i])
 	{
-		if (check_charset(mother->args.line[i], "01NSEW\n ") == -1)
+		if (check_charset(mother->args.line[i], "012NSEW\n ") == -1)
 			error(mother, 1);
 		i++;
 	}

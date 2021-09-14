@@ -89,10 +89,10 @@ int    check_args(t_input *args)
         while(args->index[args->index_i])
         {
             if ((res = ft_strncmp(&(args->line[args->tracker]), args->index[args->index_i], ft_strlen(args->index[args->index_i])) == 0))
-                break;
+                return (1);
             args->index_i++;
         }
-        return (res);
+        return (0);
 
 }
 
@@ -172,7 +172,8 @@ int    map_parsing(t_input *args, t_general *mother)
         args->tracker = 0;
         while (args->line[args->tracker] == ' ')
             args->tracker++;
-        check_args(args);
+        if (!check_args(args))
+            error(mother, 6);
         if (args->index_i == 0)
             create_map(mother);
         else if (args->index_i > 0)

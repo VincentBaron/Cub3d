@@ -19,6 +19,8 @@ void    create_texture(t_input *args, t_general *mother)
     index = args->index_i - 2;
     args->text[index].path = ft_substr_bis(args->line, args->tracker, ft_strlen(args->line) - args->tracker);
     args->text[index].img_text.image = mlx_xpm_file_to_image(mother->mlx.ptr, args->text[index].path, &(args->text[index].text_width), &(args->text[index].text_height));
+    if ((int)args->text[index].img_text.image == 0)
+        error(mother, 6);
     args->text[index].img_text.addr = mlx_get_data_addr(args->text[index].img_text.image, &(args->text[index].img_text.bpp), &(args->text[index].img_text.size_line), &(args->text[index].img_text.endian));
 
     
