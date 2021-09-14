@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 17:42:53 by vbaron            #+#    #+#             */
-/*   Updated: 2021/09/13 21:38:18 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/14 21:44:42 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,4 +73,18 @@ void	create_map(t_general *mother)
 		}
 		creat.i++;
 	}
+}
+
+int	is_empty_line(t_general *mother)
+{
+	int	i;
+
+	i = 0;
+	while (mother->args.line[i])
+	{
+		if (check_charset(mother->args.line[i], " \n") == -1)
+			return (0);
+		i++;
+	}
+	return (1);
 }

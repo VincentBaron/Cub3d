@@ -6,7 +6,7 @@
 #    By: user42 <user42@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/24 17:36:15 by vbaron            #+#    #+#              #
-#    Updated: 2021/09/13 19:45:03 by user42           ###   ########.fr        #
+#    Updated: 2021/09/14 21:48:41 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ DIR_O = objs
 
 SOURCES = general_functions_1.c \
 		map_parsing.c \
+		map_parsing2.c \
 		program_main.c \
 		starting_info.c \
 		mlx_functions.c \

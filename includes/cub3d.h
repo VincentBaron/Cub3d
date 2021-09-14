@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/18 14:03:48 by vbaron            #+#    #+#             */
-/*   Updated: 2021/09/13 19:53:51 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/14 21:48:23 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -217,14 +217,22 @@ void    set_background(t_general *mother);
 
 //map_parsing.c
 
-int    map_parsing(t_input *args, t_general *mother);
+void	map_parsing(t_input *args, t_general *mother);
 void     args_definer(t_input *args, t_general *mother);
 void    splitter_alloc(t_general *mother, t_input *args);
 void    initialise_args(t_input *args);
 
+// map_parsing2.c
+
+int	fill_args(t_input *args, char **splitter);
+void	splitter_alloc(t_general *mother, t_input *args);
+void	args_definer(t_input *args, t_general *mother);
+int	check_args(t_input *args);
+
 //general_functions_1.c
 
 void	create_map(t_general *mother);
+int	is_empty_line(t_general *mother);
 
 //starting_info.c
 
