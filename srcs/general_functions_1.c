@@ -21,7 +21,7 @@ void check_args_filled(t_general *mother)
 	i = 0;
 	while (i < 5)
 	{
-		if (mother->args.text[i].img_text.image == NULL)
+		if (mother->args.text[i].img_text.image == NULL && i != 4)
 			error(mother, 6);
 		i++;
 	}

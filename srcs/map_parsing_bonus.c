@@ -67,8 +67,6 @@ void    splitter_alloc(t_general *mother, t_input *args)
 
 void     args_definer(t_input *args, t_general *mother)
 {       
-        if (args->index_i == 6)
-            error(mother, 6);
         while (args->line[args->tracker] && !(args->line[args->tracker] >= '0' && args->line[args->tracker] <= '9') && args->line[args->tracker] != '.')
             args->tracker++;
         if (args->index_i >= 2 && args->index_i <= 6)
