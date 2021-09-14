@@ -14,6 +14,15 @@
 
 void    init_vars(t_general *mother)
 {
+    int i;
+
+    i = 0;
+    while (i < 5)
+    {
+        mother->args.text[i].img_text.image = NULL;
+        mother->args.text[i].path = NULL;
+        i++;
+    }
     mother->gps.pos.x = 0;
     mother->gps.pos.y = 0;
     mother->gps.dir.x = 0;
