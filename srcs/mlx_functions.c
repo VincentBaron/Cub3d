@@ -72,7 +72,6 @@ int ft_clean(t_general *mother)
 int key_press(int keycode, t_general *mother)
 {
      mother->gps.event = 1;
-     //movement_to_zero(mother);
      if (keycode == UP)
           mother->gps.move.y = -1;
      else if (keycode == DOWN)
@@ -87,7 +86,6 @@ int key_press(int keycode, t_general *mother)
           mother->gps.rot_right = 1;
      else if (keycode == ESC)
           ft_clean(mother);
-     printf("keycode: %d\n", keycode);
      return (0);
 }
 

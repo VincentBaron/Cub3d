@@ -56,6 +56,14 @@
 
 # define PI 3.141592
 
+typedef struct s_creator
+{
+    char	*dup;
+	char	*tmp;
+	int		size;
+	int		i;
+} t_creator;
+
 typedef struct s4_list
 {
     int x;

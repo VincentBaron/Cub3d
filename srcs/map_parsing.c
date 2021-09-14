@@ -86,7 +86,7 @@ void     args_definer(t_input *args, t_general *mother)
             mother->args.R[0] = 800;
             mother->args.R[1] = 800;
             if (!(mother->mlx.win = mlx_new_window(mother->mlx.ptr, mother->args.R[0], mother->args.R[1], "Cub3d")))
-                ft_putstr_fd("Error creating window", 2);
+                error(mother, 6);
             mother->mlx.is_created = 1;
         }
        
@@ -97,7 +97,6 @@ int    check_args(t_input *args)
         int res;
 
         args->index_i = 0;
-        printf("args->line: %s\n", &(args->line[args->tracker]));
         while(args->index[args->index_i])
         {
             if ((res = ft_strncmp(&(args->line[args->tracker]), args->index[args->index_i], ft_strlen(args->index[args->index_i])) == 0))
