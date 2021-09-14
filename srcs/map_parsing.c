@@ -34,8 +34,10 @@ void    splitter_alloc(t_general *mother, t_input *args)
     char **splitter;
     char **head;
     int x;
+    int err;
 
     x = 0;
+    err = 0;
     splitter = ft_split(&(args->line[args->tracker]), ", ");
     head = splitter;
     if (args->index_i == 1)
@@ -44,6 +46,8 @@ void    splitter_alloc(t_general *mother, t_input *args)
     {
         while (*splitter && x < 3)
         {
+            if (ft_atoi(*splitter) < 0 || ft_atoi(*splitter) > 255)
+                err++;
             if (args->index_i == 7)
                 args->F.RGB[x] = ft_atoi(*splitter);
             if (args->index_i == 8)
@@ -63,6 +67,8 @@ void    splitter_alloc(t_general *mother, t_input *args)
         x++;
     }
     free(head);
+    if (err)
+        error(mother, 6);
 }
 
 void     args_definer(t_input *args, t_general *mother)
