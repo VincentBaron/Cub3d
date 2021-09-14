@@ -117,6 +117,7 @@ typedef struct s3_list
     int         index_i;
     char        *index[10];
     int         tracker;
+    int textures;
 } t_input;
 
 typedef struct s12_list

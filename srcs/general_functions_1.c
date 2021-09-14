@@ -56,4 +56,5 @@ void	create_map(t_general *mother)
 		}
 		i++;
 	}
+	mother->map_is_created = 1;
 }

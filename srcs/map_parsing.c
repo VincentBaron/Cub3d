@@ -86,6 +86,7 @@ int    check_args(t_input *args)
         int res;
 
         args->index_i = 0;
+        printf("args->line: %s\n", &(args->line[args->tracker]));
         while(args->index[args->index_i])
         {
             if ((res = ft_strncmp(&(args->line[args->tracker]), args->index[args->index_i], ft_strlen(args->index[args->index_i])) == 0))
@@ -157,6 +158,20 @@ void    check_map(t_general *mother)
     }
 }
 
+int is_empty_line(t_general *mother)
+{
+    int i;
+
+    i = 0;
+    while (mother->args.line[i])
+    {
+        if (check_charset(mother->args.line[i], " \n") == -1)
+            return (0);
+        i++;
+    }
+    return (1);
+}
+
 int    map_parsing(t_input *args, t_general *mother)
 {
     int res;
@@ -169,15 +184,18 @@ int    map_parsing(t_input *args, t_general *mother)
     {
         if (res == -1)
             return (-1);
-        args->tracker = 0;
-        while (args->line[args->tracker] == ' ')
-            args->tracker++;
-        if (!check_args(args))
-            error(mother, 6);
-        if (args->index_i == 0)
-            create_map(mother);
-        else if (args->index_i > 0)
-            args_definer(args, mother);
+        if (!is_empty_line(mother))
+        {
+            args->tracker = 0;
+            while (args->line[args->tracker] == ' ')
+                args->tracker++;
+            if (!check_args(args))
+                error(mother, 6);
+            if (args->index_i == 0)
+                create_map(mother);
+            else if (args->index_i > 0)
+                args_definer(args, mother);
+        }
         ft_free(args->line);
     }
     create_map(mother);
