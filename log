@@ -1,17 +1,26 @@
-- Error 4: Invalid texture -args->line: NO ./textures/blue.xpm
+args->line: NO ./textures/blue.xpm
 args->line: SO ./textures/brick.xpm
 args->line: WE ./textures/wood.xpm
 args->line: EA ./textures/eagle.xpm
-args->line: C 260,128,128
-=30411== Command: ./Cub3d map.cub
-==30411== Parent PID: 9829
-==30411== 
-==30411== 
-==30411== HEAP SUMMARY:
-==30411==     in use at exit: 0 bytes in 0 blocks
-==30411==   total heap usage: 499 allocs, 499 frees, 361,921 bytes allocated
-==30411== 
-==30411== All heap blocks were freed -- no leaks are possible
-==30411== 
-==30411== For counts of detected and suppressed errors, rerun with: -v
-==30411== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 1 from 1)
+args->line: C 128,128,128
+args->line: F 0,0,0
+args->line: 1111111111111111111111111
+args->line: 1000000000110000000000001
+args==19595== 
+==19595== HEAP SUMMARY:
+==19595==     in use at exit: 0 bytes in 0 blocks
+==19595==   total heap usage: 739 allocs, 739 frees, 403,140 bytes allocated
+==19595== 
+==19595== All heap blocks were freed -- no leaks are possible
+==19595== 
+==19595== For counts of detected and suppressed errors, rerun with: -v
+==19595== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 15 from 1)
+000000000000000000000001
+args->line: 10000000000000000000000000001
+args->line: 11110111111111011100000010001
+args->line: 11110111111111011101010010001
+args->line: 11000000110101011100000010001
+args->line: 10001000000000000000000000001
+args->line: 10000000000000000001010000001
+args->line: 11000001110101011111011110N0111
+args->line: 11110111 1110101 101111010001

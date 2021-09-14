@@ -17,7 +17,8 @@ char	*ft_strndup(char *temp, int n)
 	char	*line;
 	int		i;
 
-	if (!(line = (char *)malloc(sizeof(char) * (n + 1))))
+	line = (char *)malloc(sizeof(char) * (n + 1));
+	if (!(line))
 		return (NULL);
 	i = 0;
 	while (i < n)

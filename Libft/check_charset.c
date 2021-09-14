@@ -14,7 +14,7 @@
 
 int	check_charset(char c, char const *set)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (set[i])
