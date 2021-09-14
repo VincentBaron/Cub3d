@@ -42,6 +42,7 @@ void    splitter_alloc(t_input *args)
     {
         args->R[0] = ft_atoi(splitter[0]);
         args->R[1] = ft_atoi(splitter[1]);
+        args->r_filled++;
     }
     else
     {
@@ -54,6 +55,10 @@ void    splitter_alloc(t_input *args)
             x++;
             splitter++;
         }
+        if (args->index_i == 7)
+            args->f_filled++;
+        if (args->index_i == 8)
+            args->c_filled++;
     }
     x = 0;
     while (head[x])

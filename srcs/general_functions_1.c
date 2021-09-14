@@ -12,6 +12,21 @@
 
 #include "../includes/cub3d.h"
 
+void check_args_filled(t_general *mother)
+{
+	int i;
+
+	if (mother->args.c_filled + mother->args.r_filled + mother->args.f_filled != 3)
+		error(mother, 6);
+	i = 0;
+	while (i < 5)
+	{
+		if (mother->args.text[i].img_text.image == NULL)
+			error(mother, 6);
+		i++;
+	}
+}
+
 void	create_map(t_general *mother)
 {
 	char	*dup;
@@ -19,7 +34,7 @@ void	create_map(t_general *mother)
 	int		size;
 	int		i;
 
-	
+	check_args_filled(mother);
 	i = 0;
 	while (mother->args.line[i])
 	{
@@ -56,5 +71,4 @@ void	create_map(t_general *mother)
 		}
 		i++;
 	}
-	mother->map_is_created = 1;
 }

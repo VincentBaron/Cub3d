@@ -111,6 +111,9 @@ typedef struct s3_list
     char        *map;
     char        **matrix;
     int         R[2];
+    int r_filled;
+    int f_filled;
+    int c_filled;
     t_text      text[5];
     t_rgb       F;
     t_rgb       C;

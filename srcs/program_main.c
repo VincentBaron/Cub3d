@@ -38,7 +38,7 @@ void    error(t_general *mother, int e)
         if (e == 4)
             ft_putstr_fd("- Error 4: Too many players -", 1);
         if (e == 6)
-            ft_putstr_fd("- Error 4: Invalid texture path -", 1);
+            ft_putstr_fd("- Error 4: Invalid texture -", 1);
     }
     if (e == 2)
         ft_putstr_fd("- Error 2: Arguments invalid -", 1);
