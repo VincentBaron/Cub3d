@@ -6,7 +6,7 @@
 #    By: user42 <user42@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/24 17:36:15 by vbaron            #+#    #+#              #
-#    Updated: 2021/09/14 22:57:02 by user42           ###   ########.fr        #
+#    Updated: 2021/09/15 11:05:29 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SOURCES = general_functions_1.c \
 		initialisation.c \
 		texture.c \
 		sprites.c \
+		sprites2.c \
 		movement.c \
 
 SRCS = $(addprefix $(DIR_S)/,$(SOURCES))
