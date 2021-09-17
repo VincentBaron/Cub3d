@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   raycasting.c                                       :+:      :+:    :+:   */
+/*   raycasting_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/26 17:27:55 by vbaron            #+#    #+#             */
-/*   Updated: 2021/09/14 23:05:57 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/17 22:50:19 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	draw_line(t_general *mother)
 	y = mother->dda.line_start;
 	step = 1.0 * mother->args.text[text_index].text_height
 		/ mother->dda.wall_height;
-	text_pos = (mother->dda.line_start - mother->args.R[1]
+	text_pos = (mother->dda.line_start - mother->args.r[1]
 			/ 2 + mother->dda.wall_height / 2) * step;
 	while (y < mother->dda.line_end)
 	{
@@ -57,26 +57,26 @@ void	draw_line(t_general *mother)
 
 void	draw_wall(t_general *mother)
 {
-	mother->dda.wall_height = (int)(mother->args.R[1]
+	mother->dda.wall_height = (int)(mother->args.r[1]
 			/ mother->dda.perpWallDist);
 	mother->dda.line_start = -(mother->dda.wall_height)
-		/ 2 + mother->args.R[1] / 2;
+		/ 2 + mother->args.r[1] / 2;
 	if (mother->dda.line_start < 0)
 		mother->dda.line_start = 0;
 	mother->dda.line_end = mother->dda.wall_height
-		/ 2 + mother->args.R[1] / 2;
-	if (mother->dda.line_end >= mother->args.R[1])
-		mother->dda.line_end = mother->args.R[1] - 1;
+		/ 2 + mother->args.r[1] / 2;
+	if (mother->dda.line_end >= mother->args.r[1])
+		mother->dda.line_end = mother->args.r[1] - 1;
 	draw_line(mother);
 }
 
 void	raycasting(t_general *mother)
 {
 	mother->mlx.slice = 0;
-	while (mother->mlx.slice < mother->args.R[0])
+	while (mother->mlx.slice < mother->args.r[0])
 	{
 		mother->gps.camera.x = 2 * mother->mlx.slice
-			/ (double)(mother->args.R[0]) - 1;
+			/ (double)(mother->args.r[0]) - 1;
 		mother->gps.ray.x = mother->gps.dir.x
 			+ mother->gps.camera.x * mother->gps.plane.x;
 		mother->gps.ray.y = mother->gps.dir.y

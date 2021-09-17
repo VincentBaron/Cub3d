@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 21:41:59 by user42            #+#    #+#             */
-/*   Updated: 2021/09/17 22:29:09 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/17 22:55:06 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ int	fill_args(t_input *args, char **splitter)
 			|| ft_strlen(*splitter) > 3)
 			err++;
 		if (args->index_i == 7)
-			args->F.RGB[x] = ft_atoi(*splitter);
+			args->f.rgb[x] = ft_atoi(*splitter);
 		if (args->index_i == 8)
-			args->C.RGB[x] = ft_atoi(*splitter);
+			args->c.rgb[x] = ft_atoi(*splitter);
 		x++;
 		splitter++;
 	}

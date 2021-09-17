@@ -3,7 +3,7 @@ NO ./textures/blue.xpm
 
 SO ./textures/brick.xpm
 
-W E    ./textures/wood.xpm
+WE    ./textures/wood.xpm
 
 EA ./textures/eagle.xpm
 

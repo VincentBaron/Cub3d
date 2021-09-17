@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   texture.c                                          :+:      :+:    :+:   */
+/*   texture_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 16:38:29 by vincentbaro       #+#    #+#             */
-/*   Updated: 2021/09/17 17:48:13 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/17 22:56:47 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ void	create_texture(t_input *args, t_general *mother)
 void	wall_position_calculation(t_general *mother)
 {
 	if (mother->dda.side_pos == 0)
-		mother->map.wall_pos = mother->gps.pos.y + mother->dda.perpWallDist
+		mother->map.wall_pos = mother->gps.pos.y + mother->dda.perpwalldist
 			* mother->gps.ray.y;
 	else
-		mother->map.wall_pos = mother->gps.pos.x + mother->dda.perpWallDist
+		mother->map.wall_pos = mother->gps.pos.x + mother->dda.perpwalldist
 			* mother->gps.ray.x;
 	mother->map.wall_pos -= floor(mother->map.wall_pos);
 }

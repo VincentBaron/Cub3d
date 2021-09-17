@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sprites2.c                                         :+:      :+:    :+:   */
+/*   sprites2_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 10:55:58 by user42            #+#    #+#             */
-/*   Updated: 2021/09/17 19:14:05 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/17 22:51:19 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	part3(t_general *mother)
 {
-	mother->sprite.zbuffer = (int *)malloc(sizeof(int) * mother->args.R[0]);
+	mother->sprite.zbuffer = (int *)malloc(sizeof(int) * mother->args.r[0]);
 	if (!mother->sprite.zbuffer)
 		error(mother, 3);
 	mother->sprite.sprite_order = (int *)malloc(sizeof(int)

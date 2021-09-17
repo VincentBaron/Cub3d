@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   distance_calculations.c                            :+:      :+:    :+:   */
+/*   distance_calculations_bonus.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vbaron <vbaron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/26 15:07:46 by vbaron            #+#    #+#             */
-/*   Updated: 2021/01/08 10:46:50 by vbaron           ###   ########.fr       */
+/*   Updated: 2021/09/17 22:56:09 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,9 @@ void	distance_calculations(t_general *mother)
 	initial_side_distance(mother);
 	collision_calculator(mother);
 	if (mother->dda.side_pos == 0)
-		mother->dda.perpWallDist = (mother->dda.map.x - mother->gps.pos.x
+		mother->dda.perpwalldist = (mother->dda.map.x - mother->gps.pos.x
 				+ (1 - mother->dda.step.x) / 2) / mother->gps.ray.x;
 	else
-		mother->dda.perpWallDist = (mother->dda.map.y - mother->gps.pos.y
+		mother->dda.perpwalldist = (mother->dda.map.y - mother->gps.pos.y
 				+ (1 - mother->dda.step.y) / 2) / mother->gps.ray.y;
 }

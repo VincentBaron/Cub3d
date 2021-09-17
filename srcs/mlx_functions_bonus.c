@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_functions.c                                    :+:      :+:    :+:   */
+/*   mlx_functions_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/24 16:49:29 by vbaron            #+#    #+#             */
-/*   Updated: 2021/09/17 19:08:09 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/17 22:49:16 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	events_list(t_general *mother)
 	{
 		set_background(mother);
 		movement(mother);
-		if (mother->args.R[0] > 500 && mother->args.R[1] > 500)
+		if (mother->args.r[0] > 500 && mother->args.r[1] > 500)
 			draw_map(mother);
 		raycasting(mother);
 		display_images(mother);
@@ -68,7 +68,7 @@ void	game_start(t_general *mother)
 	if (mother->mlx.is_created == 0)
 	{
 		mother->mlx.win = mlx_new_window(mother->mlx.ptr,
-				mother->args.R[0], mother->args.R[1], "Cub3d");
+				mother->args.r[0], mother->args.r[1], "Cub3d");
 		if (!(mother->mlx.win))
 			error(mother, 6);
 		mother->mlx.is_created = 1;
