@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_parsing2.c                                     :+:      :+:    :+:   */
+/*   map_parsing2_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 21:41:59 by user42            #+#    #+#             */
-/*   Updated: 2021/09/17 19:14:21 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/17 22:16:25 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,13 +78,23 @@ void	args_definer(t_input *args, t_general *mother)
 int	check_args(t_input *args)
 {
 	int	res;
+	int	i;
 
+	i = 0;
+	if (args->line[0] == '1')
+		return (1);
+	while (args->line[i])
+	{
+		if (args->line[i] == ' ')
+			break ;
+		i++;
+	}
 	args->index_i = 0;
 	while (args->index[args->index_i])
 	{
 		res = ft_strncmp(&(args->line[args->tracker]),
 				args->index[args->index_i],
-				ft_strlen(args->index[args->index_i]));
+				i);
 		if (res == 0)
 			return (1);
 		args->index_i++;

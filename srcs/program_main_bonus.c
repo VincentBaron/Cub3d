@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   program_main.c                                     :+:      :+:    :+:   */
+/*   program_main_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/19 12:38:34 by vbaron            #+#    #+#             */
-/*   Updated: 2021/09/17 19:05:42 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/17 22:16:05 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	error(t_general *mother, int e)
 		if (e == 6)
 			ft_putstr_fd("- Error 6: Invalid texture -", 1);
 		if (e == 10)
-			ft_putstr_fd("- Error 5: Texture duplicate -", 1);
+			ft_putstr_fd("- Error 5:duplicate or invalid element -", 1);
 		if (e == 8)
 			ft_putstr_fd("- Error 8: Invalid file -", 1);
 	}
