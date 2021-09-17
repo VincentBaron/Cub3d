@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 22:22:15 by user42            #+#    #+#             */
-/*   Updated: 2021/09/15 11:14:11 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/17 19:18:21 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,14 +78,6 @@ int	ft_clean(t_general *mother)
 
 void	create_images(t_general *mother)
 {
-	if (mother->args.R[0] > 500 && mother->args.R[1] > 500)
-	{
-		mother->mlx.img_map.image = mlx_new_image(mother->mlx.ptr,
-				mother->map.res_x, mother->map.res_y);
-		mother->mlx.img_map.addr = mlx_get_data_addr(mother->mlx.img_map.image,
-				&(mother->mlx.img_map.bpp), &(mother->mlx.img_map.size_line),
-				&(mother->mlx.img_map.endian));
-	}
 	mother->mlx.img_ray.image = mlx_new_image(mother->mlx.ptr,
 			mother->args.R[0], mother->args.R[1]);
 	mother->mlx.img_ray.addr = mlx_get_data_addr(mother->mlx.img_ray.image,
@@ -97,7 +89,4 @@ void	display_images(t_general *mother)
 {
 	mlx_put_image_to_window(mother->mlx.ptr,
 		mother->mlx.win, mother->mlx.img_ray.image, 0, 0);
-	if (mother->args.R[0] > 500 && mother->args.R[1] > 500)
-		mlx_put_image_to_window(mother->mlx.ptr,
-			mother->mlx.win, mother->mlx.img_map.image, 0, 0);
 }
