@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 21:41:59 by user42            #+#    #+#             */
-/*   Updated: 2021/09/17 22:16:25 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/17 22:29:09 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,22 +79,24 @@ int	check_args(t_input *args)
 {
 	int	res;
 	int	i;
+	int	length;
 
-	i = 0;
+	i = -1;
 	if (args->line[0] == '1')
 		return (1);
-	while (args->line[i])
+	while (args->line[++i])
 	{
 		if (args->line[i] == ' ')
 			break ;
-		i++;
 	}
 	args->index_i = 0;
 	while (args->index[args->index_i])
 	{
+		length = i;
+		if ((int)ft_strlen(args->index[args->index_i]) > i)
+			length = (int)ft_strlen(args->index[args->index_i]);
 		res = ft_strncmp(&(args->line[args->tracker]),
-				args->index[args->index_i],
-				i);
+				args->index[args->index_i], length);
 		if (res == 0)
 			return (1);
 		args->index_i++;
