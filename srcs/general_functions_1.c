@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 17:42:53 by vbaron            #+#    #+#             */
-/*   Updated: 2021/09/14 23:20:55 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/17 18:27:37 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void	create_map(t_general *mother)
 {
 	t_creator	creat;
 
+	mother->map_started = 1;
 	check_args_filled(mother);
 	creat.i = 0;
 	while (mother->args.line[creat.i])

@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/18 14:03:48 by vbaron            #+#    #+#             */
-/*   Updated: 2021/09/14 22:23:19 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/17 18:19:43 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -202,6 +202,7 @@ typedef struct s5_list
     t_dda dda;
     t_sprite sprite;
     int error;
+    int map_started;
 }   t_general;
 
 //program_main.c

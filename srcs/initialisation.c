@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 10:34:46 by vincentbaro       #+#    #+#             */
-/*   Updated: 2021/09/14 21:44:01 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/17 18:32:38 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void	initialise_args(t_input *args)
 	args->index[9] = NULL;
 	args->F.RGB[0] = -1;
 	args->C.RGB[0] = -1;
+	args->R[0] = 800;
+	args->R[1] = 800;
 }
 
 void	init_vars2(t_general *mother)
@@ -79,6 +81,7 @@ void	init_vars(t_general *mother)
 	mother->gps.move.x = 0;
 	mother->gps.move.y = 0;
 	mother->gps.rot_left = 0;
+	mother->map_started = 0;
 	init_vars2(mother);
 }
 
