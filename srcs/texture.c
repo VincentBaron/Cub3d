@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 16:38:29 by vincentbaro       #+#    #+#             */
-/*   Updated: 2021/09/15 11:13:14 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/17 17:48:13 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	create_texture(t_input *args, t_general *mother)
 	int	index;
 
 	index = args->index_i - 2;
+	if (args->text[index].img_text.image != NULL)
+		error(mother, 10);
 	args->text[index].path = ft_substr_bis(args->line, args->tracker,
 			ft_strlen(args->line) - args->tracker);
 	args->text[index].img_text.image = mlx_xpm_file_to_image(mother->mlx.ptr,

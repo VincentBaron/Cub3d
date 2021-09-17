@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/24 16:49:29 by vbaron            #+#    #+#             */
-/*   Updated: 2021/09/14 22:23:51 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/17 17:39:48 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,14 @@ int	events_list(t_general *mother)
 
 void	game_start(t_general *mother)
 {
+		if (mother->mlx.is_created == 0)
+	{
+		mother->mlx.win = mlx_new_window(mother->mlx.ptr,
+				mother->args.R[0], mother->args.R[1], "Cub3d");
+		if (!(mother->mlx.win))
+			error(mother, 6);
+		mother->mlx.is_created = 1;
+	}
 	create_images(mother);
 	mlx_hook(mother->mlx.win, KEY_PRESS, 1L << 0, &key_press, mother);
 	mlx_hook(mother->mlx.win, 33, (1L << 17), ft_clean, mother);

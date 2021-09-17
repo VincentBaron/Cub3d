@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/23 19:02:56 by vbaron            #+#    #+#             */
-/*   Updated: 2021/09/14 21:47:00 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/17 17:39:38 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,8 @@ void	map_parsing(t_input *args, t_general *mother)
 {
 	int	res;
 
+			mother->args.R[0] = 800;
+		mother->args.R[1] = 800;
 	mother->mlx.ptr = mlx_init();
 	if (!mother->mlx.ptr)
 		  error(mother, 6);

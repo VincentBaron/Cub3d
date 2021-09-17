@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/19 12:38:34 by vbaron            #+#    #+#             */
-/*   Updated: 2021/09/14 22:29:05 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/17 17:55:10 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	error(t_general *mother, int e)
 {
-	if (e == 1 || e == 4 || e == 6 || e == 8)
+	if (e == 1 || e == 4 || e == 6 || e == 8 || e == 10)
 	{
 		if (mother->args.line)
 			free(mother->args.line);
@@ -23,9 +23,11 @@ void	error(t_general *mother, int e)
 		if (e == 1)
 			ft_putstr_fd("- Error 1: Map is unvalid -", 1);
 		if (e == 4)
-			ft_putstr_fd("- Error 4: Too many players -", 1);
+			ft_putstr_fd("- Error 1: Map is unvalid -", 1);
 		if (e == 6)
 			ft_putstr_fd("- Error 6: Invalid texture -", 1);
+		if (e == 10)
+			ft_putstr_fd("- Error 5: Texture duplicate -", 1);
 		if (e == 8)
 			ft_putstr_fd("- Error 8: Invalid file -", 1);
 	}

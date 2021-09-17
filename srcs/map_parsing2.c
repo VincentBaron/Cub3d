@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 21:41:59 by user42            #+#    #+#             */
-/*   Updated: 2021/09/15 11:15:52 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/17 17:51:53 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	fill_args(t_input *args, char **splitter)
 	err = 0;
 	while (*splitter && x < 3)
 	{
-		if (ft_atoi(*splitter) < 0 || ft_atoi(*splitter) > 255)
+		if (ft_atoi(*splitter) < 0 || ft_atoi(*splitter) > 255 || ft_strlen(*splitter) > 3)
 			err++;
 		if (args->index_i == 7)
 			args->F.RGB[x] = ft_atoi(*splitter);
@@ -74,16 +74,6 @@ void	args_definer(t_input *args, t_general *mother)
 		create_texture(args, mother);
 	if (args->index_i == 7 || args->index_i == 8 || args->index_i == 1)
 		splitter_alloc(mother, args);
-	if (mother->mlx.is_created == 0)
-	{
-		mother->args.R[0] = 800;
-		mother->args.R[1] = 800;
-		mother->mlx.win = mlx_new_window(mother->mlx.ptr,
-				mother->args.R[0], mother->args.R[1], "Cub3d");
-		if (!(mother->mlx.win))
-			error(mother, 6);
-		mother->mlx.is_created = 1;
-	}
 }
 
 int	check_args(t_input *args)
