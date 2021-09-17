@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 17:42:53 by vbaron            #+#    #+#             */
-/*   Updated: 2021/09/17 19:12:05 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/17 19:00:38 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	check_args_filled(t_general *mother)
 	i = 0;
 	while (i < 5)
 	{
-		if (mother->args.text[i].img_text.image == NULL && i != 4)
+		if (mother->args.text[i].img_text.image == NULL)
 			error(mother, 6);
 		i++;
 	}
@@ -58,7 +58,7 @@ void	create_map(t_general *mother)
 	creat.i = 0;
 	while (mother->args.line[creat.i])
 	{
-		if (check_charset(mother->args.line[creat.i], "01NSEW\n ") == -1)
+		if (check_charset(mother->args.line[creat.i], "012NSEW\n ") == -1)
 			error(mother, 1);
 		creat.i++;
 	}
