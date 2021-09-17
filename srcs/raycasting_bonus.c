@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/26 17:27:55 by vbaron            #+#    #+#             */
-/*   Updated: 2021/09/17 22:50:19 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/17 23:05:21 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	draw_line(t_general *mother)
 void	draw_wall(t_general *mother)
 {
 	mother->dda.wall_height = (int)(mother->args.r[1]
-			/ mother->dda.perpWallDist);
+			/ mother->dda.perpwalldist);
 	mother->dda.line_start = -(mother->dda.wall_height)
 		/ 2 + mother->args.r[1] / 2;
 	if (mother->dda.line_start < 0)
@@ -84,7 +84,7 @@ void	raycasting(t_general *mother)
 		distance_calculations(mother);
 		draw_wall(mother);
 		mother->sprite.zbuffer[mother->mlx.slice]
-			= mother->dda.perpWallDist;
+			= mother->dda.perpwalldist;
 		(mother->mlx.slice)++;
 	}
 	sort_sprites(mother);

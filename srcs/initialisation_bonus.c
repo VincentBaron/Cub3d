@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 10:34:46 by vincentbaro       #+#    #+#             */
-/*   Updated: 2021/09/17 22:48:48 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/17 23:06:52 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void	initialise_args(t_input *args)
 	args->index[7] = "F";
 	args->index[8] = "C";
 	args->index[9] = NULL;
-	args->F.rgb[0] = -1;
-	args->C.rgb[0] = -1;
+	args->f.rgb[0] = -1;
+	args->c.rgb[0] = -1;
 	args->r[0] = 800;
 	args->r[1] = 800;
 }
@@ -117,8 +117,8 @@ void	set_background(t_general *mother)
 	int	x;
 	int	y;
 
-	mother->mlx.img_ray.color = (mother->args.C.rgb[0] << 16)
-		+ (mother->args.C.rgb[1] << 8) + mother->args.C.rgb[2];
+	mother->mlx.img_ray.color = (mother->args.c.rgb[0] << 16)
+		+ (mother->args.c.rgb[1] << 8) + mother->args.c.rgb[2];
 	y = 0;
 	while (y < mother->args.r[1])
 	{
@@ -126,8 +126,8 @@ void	set_background(t_general *mother)
 		while (x < mother->args.r[0])
 		{
 			if (y > mother->args.r[1] / 2)
-				mother->mlx.img_ray.color = (mother->args.F.rgb[0] << 16)
-					+ (mother->args.F.rgb[1] << 8) + mother->args.F.rgb[2];
+				mother->mlx.img_ray.color = (mother->args.f.rgb[0] << 16)
+					+ (mother->args.f.rgb[1] << 8) + mother->args.f.rgb[2];
 			draw_pixel(&(mother->mlx.img_ray), x, y);
 			x++;
 		}
