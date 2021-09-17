@@ -6,33 +6,35 @@
 #    By: user42 <user42@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/24 17:36:15 by vbaron            #+#    #+#              #
-#    Updated: 2021/09/17 17:40:41 by user42           ###   ########.fr        #
+#    Updated: 2021/09/17 21:04:32 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 DIR_S = srcs
+DIR_B = bonus
 DIR_O = objs
 
-SOURCES = general_functions_1.c \
-		map_parsing.c \
-		map_parsing2.c \
-		program_main.c \
-		starting_info.c \
-		mlx_functions.c \
-		mlx_functions2.c \
-		get_next_line.c \
-		get_next_line_utils.c \
-		map_functions.c \
-		raycasting.c \
-		distance_calculations.c \
-		initialisation.c \
-		texture.c \
-		sprites.c \
-		sprites2.c \
-		movement.c \
+SOURCES = general_functions_1_bonus.c \
+		map_parsing_bonus.c \
+		map_parsing2_bonus.c \
+		program_main_bonus.c \
+		starting_info_bonus.c \
+		mlx_functions_bonus.c \
+		mlx_functions2_bonus.c \
+		get_next_line_bonus.c \
+		get_next_line_utils_bonus.c \
+		map_functions_bonus.c \
+		raycasting_bonus.c \
+		distance_calculations_bonus.c \
+		initialisation_bonus.c \
+		texture_bonus.c \
+		sprites_bonus.c \
+		sprites2_bonus.c \
+		movement_bonus.c \
 
 SRCS = $(addprefix $(DIR_S)/,$(SOURCES))
 OBJS = $(addprefix $(DIR_O)/,$(SOURCES:.c=.o))
+
 HEADERS = headers
 LIBFT_DIR = Libft
 
@@ -77,6 +79,8 @@ $(DIR_O)/%.o: $(DIR_S)/%.c
 
 $(NAME): $(OBJS) $(LIBFT) $(MLX)
 		$(CC) $(CFLAGS) $(LIBS) $^ -o $@
+
+bonus: all
 
 $(LIBFT):
 		 make -C $(LIBFT_DIR)

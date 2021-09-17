@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/24 16:49:29 by vbaron            #+#    #+#             */
-/*   Updated: 2021/09/17 19:17:08 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/17 19:08:09 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ int	events_list(t_general *mother)
 	{
 		set_background(mother);
 		movement(mother);
+		if (mother->args.R[0] > 500 && mother->args.R[1] > 500)
+			draw_map(mother);
 		raycasting(mother);
 		display_images(mother);
 	}

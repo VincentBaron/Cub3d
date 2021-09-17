@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 10:55:58 by user42            #+#    #+#             */
-/*   Updated: 2021/09/17 19:11:20 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/17 19:14:05 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,6 @@ void	create_sprites(t_general *mother)
 		}
 		i++;
 	}
-	if (mother->sprite.sprite_count > 0
-		&& (int)mother->mlx.img_sprite.image == 0)
-		error(mother, 6);
 	part2(mother);
 	part3(mother);
 }

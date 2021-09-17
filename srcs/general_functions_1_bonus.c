@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   general_functions_1.c                              :+:      :+:    :+:   */
+/*   general_functions_1_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 17:42:53 by vbaron            #+#    #+#             */
-/*   Updated: 2021/09/17 19:12:05 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/17 21:17:04 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,14 @@ void	create_map(t_general *mother)
 
 	mother->map_started = 1;
 	check_args_filled(mother);
-	creat.i = 0;
-	while (mother->args.line[creat.i])
+	creat.i = -1;
+	while (mother->args.line[++creat.i])
 	{
-		if (check_charset(mother->args.line[creat.i], "01NSEW\n ") == -1)
+		if (mother->args.line[creat.i] == '2'
+			&& (int)mother->args.text[4].img_text.image == 0)
+			error(mother, 6);
+		if (check_charset(mother->args.line[creat.i], "012NSEW\n ") == -1)
 			error(mother, 1);
-		creat.i++;
 	}
 	creat.tmp = NULL;
 	creat.i = 0;
