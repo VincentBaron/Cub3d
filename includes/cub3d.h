@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/18 14:03:48 by vbaron            #+#    #+#             */
-/*   Updated: 2021/09/17 23:01:49 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/21 21:20:17 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -232,6 +232,7 @@ int		check_args(t_input *args);
 
 void	create_map(t_general *mother);
 int		is_empty_line(t_general *mother);
+int		check_dups(char *line);
 
 //starting_info.c
 

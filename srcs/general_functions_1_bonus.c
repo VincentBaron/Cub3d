@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 17:42:53 by vbaron            #+#    #+#             */
-/*   Updated: 2021/09/17 21:17:04 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/21 21:20:37 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,20 @@ int	is_empty_line(t_general *mother)
 			return (0);
 		i++;
 	}
+	return (1);
+}
+
+int	check_dups(char *line)
+{
+	char	**tmp;
+	int		i;
+
+	tmp = ft_split(line, " ");
+	i = -1;
+	while (tmp[++i])
+		free(tmp[i]);
+	free(tmp);
+	if (i != 2)
+		return (0);
 	return (1);
 }

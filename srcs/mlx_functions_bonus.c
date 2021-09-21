@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/24 16:49:29 by vbaron            #+#    #+#             */
-/*   Updated: 2021/09/17 22:49:16 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/21 20:59:25 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int	key_press(int keycode, t_general *mother)
 
 int	key_release(int keycode, t_general *mother)
 {
+	mother->gps.event = 0;
 	if (keycode == UP)
 		mother->gps.move.y = 0;
 	else if (keycode == DOWN)
