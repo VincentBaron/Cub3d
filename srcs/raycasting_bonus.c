@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/26 17:27:55 by vbaron            #+#    #+#             */
-/*   Updated: 2021/09/17 23:05:21 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/17 23:24:47 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ int	texture_orientation(t_general *mother)
 {
 	wall_position_calculation(mother);
 	if (mother->dda.side_pos == 1 && mother->gps.ray.y < 0)
-		return (0);
-	if (mother->dda.side_pos == 1 && mother->gps.ray.y > 0)
 		return (1);
+	if (mother->dda.side_pos == 1 && mother->gps.ray.y > 0)
+		return (0);
 	if (mother->dda.side_pos == 0 && mother->gps.ray.x > 0)
 		return (2);
 	if (mother->dda.side_pos == 0 && mother->gps.ray.x < 0)

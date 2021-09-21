@@ -6,11 +6,33 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 21:41:59 by user42            #+#    #+#             */
-/*   Updated: 2021/09/17 22:55:06 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/21 19:36:03 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
+int check_color(char **splitter)
+{
+	int i;
+	int f;
+
+	i = 0;
+	while(splitter[i])
+	{
+		
+		f = -1;
+		while (splitter[i][++f])
+		{
+			if (splitter[i][f] > '9' || splitter[i][f] < '0')
+				return (0);
+		}
+		i++;
+	}
+	if (i != 3)
+		return (0);
+	return (1);
+}
 
 int	fill_args(t_input *args, char **splitter)
 {
@@ -19,6 +41,8 @@ int	fill_args(t_input *args, char **splitter)
 
 	x = 0;
 	err = 0;
+	if (!check_color(splitter))
+		return (1);
 	while (*splitter && x < 3)
 	{
 		if (ft_atoi(*splitter) < 0 || ft_atoi(*splitter) > 255
@@ -46,7 +70,7 @@ void	splitter_alloc(t_general *mother, t_input *args)
 	int		err;
 
 	err = 0;
-	splitter = ft_split(&(args->line[args->tracker]), ", ");
+	splitter = ft_split(&(args->line[args->tracker]), ",");
 	head = splitter;
 	if (args->index_i == 1)
 		error(mother, 6);
@@ -75,20 +99,37 @@ void	args_definer(t_input *args, t_general *mother)
 		splitter_alloc(mother, args);
 }
 
+int check_dups(char *line)
+{
+	char **tmp;
+	int i;
+	
+	tmp  = ft_split(line, " ");
+	i = -1;
+	while (tmp[++i])
+		free(tmp[i]);
+	free(tmp);
+	if (i != 2)
+		return (0);
+	return (1);
+}
+
 int	check_args(t_input *args)
 {
 	int	res;
 	int	i;
 	int	length;
 
-	i = -1;
 	if (args->line[0] == '1')
 		return (1);
+	i = -1;
 	while (args->line[++i])
 	{
 		if (args->line[i] == ' ')
 			break ;
 	}
+	if (check_dups(&args->line[i]))
+		return (0);
 	args->index_i = 0;
 	while (args->index[args->index_i])
 	{

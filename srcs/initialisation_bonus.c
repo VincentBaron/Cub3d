@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/02 10:34:46 by vincentbaro       #+#    #+#             */
-/*   Updated: 2021/09/17 23:06:52 by user42           ###   ########.fr       */
+/*   Updated: 2021/09/21 18:41:07 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void	initialise_args(t_input *args)
 	args->index[7] = "F";
 	args->index[8] = "C";
 	args->index[9] = NULL;
-	args->f.rgb[0] = -1;
-	args->c.rgb[0] = -1;
+	args->f.rgb[0] = -143232;
+	args->c.rgb[0] = -143432;
 	args->r[0] = 800;
 	args->r[1] = 800;
 }
