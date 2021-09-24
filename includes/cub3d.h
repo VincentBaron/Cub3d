@@ -233,7 +233,6 @@ int		check_args(t_input *args);
 void	create_map(t_general *mother);
 int		is_empty_line(t_general *mother);
 int		check_dups(char *line);
-
 //starting_info.c
 
 void	position_info(t_general *mother);

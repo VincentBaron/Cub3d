@@ -75,10 +75,25 @@ void	check_map(t_general *mother)
 
 void	args_managment(t_general *mother, t_input *args)
 {
+	char	**tmp;
+	int		i;
+	int		err;
+
+	err = 0;
 	args->tracker = 0;
 	while (args->line[args->tracker] == ' ')
 		args->tracker++;
 	if (!check_args(args))
+		error(mother, 6);
+	tmp = ft_split(args->line, " ");
+	if (args->index_i != 0 && (ft_strlen(tmp[0])
+			!= ft_strlen(args->index[args->index_i])))
+		err++;
+	i = -1;
+	while (tmp[++i])
+		free(tmp[i]);
+	free(tmp);
+	if (err)
 		error(mother, 6);
 	args_definer(args, mother);
 }

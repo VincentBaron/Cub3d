@@ -16,6 +16,8 @@ void	create_texture(t_input *args, t_general *mother)
 {
 	int	index;
 
+	if (args->line[args->tracker - 1] != ' ')
+		error(mother, 10);
 	index = args->index_i - 2;
 	if (args->text[index].img_text.image != NULL)
 		error(mother, 10);

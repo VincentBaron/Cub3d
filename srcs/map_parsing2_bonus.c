@@ -92,6 +92,8 @@ void	args_definer(t_input *args, t_general *mother)
 			&& args->line[args->tracker] <= '9')
 		&& args->line[args->tracker] != '.')
 		args->tracker++;
+	if (args->index_i != 0 && args->line[args->tracker - 1] != ' ')
+		error(mother, 6);
 	if (args->index_i >= 2 && args->index_i <= 6)
 		create_texture(args, mother);
 	if (args->index_i == 7 || args->index_i == 8 || args->index_i == 1)
@@ -105,15 +107,15 @@ int	check_args(t_input *args)
 	int	length;
 
 	i = 0;
-	if (args->line[i] == '1')
+	if (args->line[args->tracker] == '1')
 	{
 		args->index_i = 0;
 		return (1);
 	}
 	if (!check_dups(args->line))
 		return (0);
-	args->index_i = 0;
-	while (args->index[args->index_i])
+	args->index_i = -1;
+	while (args->index[++args->index_i])
 	{
 		length = i;
 		if ((int)ft_strlen(args->index[args->index_i]) > i)
@@ -122,7 +124,6 @@ int	check_args(t_input *args)
 				args->index[args->index_i], length);
 		if (res == 0)
 			return (1);
-		args->index_i++;
 	}
 	return (0);
 }
