@@ -79,11 +79,8 @@ void	args_managment(t_general *mother, t_input *args)
 	while (args->line[args->tracker] == ' ')
 		args->tracker++;
 	if (!check_args(args))
-		error(mother, 6);
-	if (args->index_i == 0)
-		create_map(mother);
-	else if (args->index_i > 0)
-		args_definer(args, mother);
+		error(mother, 6);;
+	args_definer(args, mother);
 }
 
 void	map_parsing(t_input *args, t_general *mother)
@@ -102,8 +99,10 @@ void	map_parsing(t_input *args, t_general *mother)
 			error(mother, 1);
 		if (res == -1)
 			error(mother, 8);
-		if (!is_empty_line(mother))
+		if (!is_empty_line(mother) && mother->map_started == 0)
 			args_managment(mother, args);
+		if (args->index_i == 0)
+			create_map(mother);
 		ft_free(args->line);
 		res = get_next_line(args->fd, &(args->line));
 	}
