@@ -105,15 +105,11 @@ int	check_args(t_input *args)
 	int	length;
 
 	i = 0;
-	while (args->line[i] && args->line[i] == ' ')
-		i++;
 	if (args->line[i] == '1')
 	{
 		args->index_i = 0;
 		return (1);
 	}
-	while (args->line[i] && args->line[i] != ' ')
-		i++;
 	if (!check_dups(args->line))
 		return (0);
 	args->index_i = 0;

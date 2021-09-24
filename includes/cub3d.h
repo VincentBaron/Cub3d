@@ -294,7 +294,8 @@ void	create_sprites(t_general *mother);
 void	sort_sprites(t_general *mother);
 void	sprite_projection(t_general *mother);
 void	drawing_constrains(t_general *mother);
-
+void	map_creation(t_general *mother, t_input *args);
+void	check_map(t_general *mother);
 //bmp.c
 
 void	fill_file(t_general *mother);

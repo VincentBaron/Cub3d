@@ -100,3 +100,13 @@ void	draw_map(t_general *mother)
 	}
 	draw_player(mother);
 }
+
+void	map_creation(t_general *mother, t_input *args)
+{
+	create_map(mother);
+	args->matrix = ft_split(args->map, "x");
+	check_map(mother);
+	create_sprites(mother);
+	ft_free(args->map);
+	free(args->line);
+}
